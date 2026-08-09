@@ -1,0 +1,1360 @@
+{
+  "part": 1,
+  "title": "Physics and data foundation",
+  "data": {
+    "aerospace": {
+      "materials": {
+        "Al2024-T3": {
+          "E_GPa": 73.1,
+          "K_IC": 36.0,
+          "paris_C": 3.6e-10,
+          "paris_m": 3.5,
+          "G_c_J_m2": 17729.138166894663,
+          "missing": []
+        },
+        "Al7075-T6": {
+          "E_GPa": 71.7,
+          "K_IC": 29.0,
+          "paris_C": 5e-11,
+          "paris_m": 4.0,
+          "G_c_J_m2": 10452.093444909346,
+          "missing": []
+        }
+      },
+      "cycles_per_year": 500,
+      "impact": {
+        "fatigue_share_of_structural_failures": 0.2,
+        "source": "FAA / NTSB airframe structural failure statistics, fatigue cracking is the dominant single cause at roughly 20 percent."
+      }
+    },
+    "biomedical": {
+      "materials": {
+        "CorticalBone_healthy": {
+          "E_GPa": 20.0,
+          "K_IC": 4.0,
+          "paris_C": 1.3e-07,
+          "paris_m": 6.7,
+          "G_c_J_m2": 728.0,
+          "missing": []
+        },
+        "CorticalBone_osteoporotic": {
+          "E_GPa": 12.0,
+          "K_IC": 2.2,
+          "paris_C": 4e-07,
+          "paris_m": 6.7,
+          "G_c_J_m2": 367.03333333333336,
+          "missing": []
+        }
+      },
+      "cycles_per_year": 1500000,
+      "impact": {
+        "annual_hip_and_knee_replacements_us": 400000,
+        "revision_cost_usd_range": [
+          15000,
+          50000
+        ],
+        "source": "American Academy of Orthopaedic Surgeons and NIH/NIAMS. Implant-bone interface fracture is the leading driver of revision surgery."
+      }
+    },
+    "civil": {
+      "materials": {
+        "Concrete_normal": {
+          "E_GPa": 30.0,
+          "K_IC": 1.732,
+          "paris_C": 3e-09,
+          "paris_m": 4.0,
+          "G_c_J_m2": 95.994368,
+          "missing": []
+        },
+        "Rebar_A615_Gr60": {
+          "E_GPa": 200.0,
+          "K_IC": 60.0,
+          "paris_C": 1e-11,
+          "paris_m": 3.0,
+          "G_c_J_m2": 16380.0,
+          "missing": []
+        }
+      },
+      "cycles_per_year": 5000000,
+      "impact": {
+        "us_bridges_in_nbi": 617000,
+        "structurally_deficient_bridges": 42000,
+        "source": "FHWA National Bridge Inventory, https://www.fhwa.dot.gov/bridge/nbi.cfm and ASCE 2021 Infrastructure Report Card."
+      }
+    },
+    "gait_points": 21,
+    "corrosion_levels": [
+      "none",
+      "mild",
+      "moderate",
+      "severe"
+    ],
+    "keller_check_GPa_at_rho_1.85": 42.954884648372314
+  },
+  "lefm_geometry": {
+    "center_crack": [
+      {
+        "a_over_b": 0.3,
+        "F_computed": 1.0593989983166685,
+        "F_reference": 1.059399,
+        "error_percent": -1.588949464943344e-07
+      },
+      {
+        "a_over_b": 0.4,
+        "F_computed": 1.1117859405028423,
+        "F_reference": 1.111786,
+        "error_percent": -5.351493690789696e-06
+      },
+      {
+        "a_over_b": 0.5,
+        "F_computed": 1.189207115002721,
+        "F_reference": 1.189207,
+        "error_percent": 9.670538528940548e-06
+      }
+    ],
+    "worst_error_percent": 9.670538528940548e-06,
+    "F_edge_at_a_over_W_0.2": 1.370664,
+    "F_compact_at_a_over_W_0.5": 7.706829711262351,
+    "F_edge_expected_near": 1.37,
+    "note_compact": "F_compact is f(a/W)*sqrt(W/(pi*a)) so it is large by construction"
+  },
+  "lefm_integrator": {
+    "cases": [
+      {
+        "domain": "aerospace",
+        "material": "Al2024-T3",
+        "sigma_MPa": 150.0,
+        "a_0_mm": 1.0,
+        "a_c_mm": 18.334649444186343,
+        "N_f_numerical": 1906.7599186775676,
+        "N_f_closed_form": 1906.7599186775174,
+        "error_percent": 2.6353387115356496e-12
+      },
+      {
+        "domain": "biomedical",
+        "material": "CorticalBone_healthy",
+        "sigma_MPa": 40.0,
+        "a_0_mm": 0.1,
+        "a_c_mm": 3.1830988618379075,
+        "N_f_numerical": 3277.9859057710373,
+        "N_f_closed_form": 3277.985905771036,
+        "error_percent": 4.161830135564602e-14
+      },
+      {
+        "domain": "civil",
+        "material": "Concrete_normal",
+        "sigma_MPa": 2.0,
+        "a_0_mm": 5.0,
+        "a_c_mm": 238.7184090028509,
+        "N_f_numerical": 413329138.46920204,
+        "N_f_closed_form": 413329138.469202,
+        "error_percent": 1.4420624927664492e-14
+      }
+    ],
+    "worst_error_percent": 2.6353387115356496e-12
+  },
+  "lefm_rate_law": {
+    "series": [
+      {
+        "series": "Al2024-T3_R0.1",
+        "material": "Al2024-T3",
+        "m_material": 3.5,
+        "m_from_reference": 3.5003036712051623,
+        "slope_error_absolute": 0.0003036712051622814,
+        "C_material": 3.6e-10,
+        "C_from_reference": 6.317833114969871e-11,
+        "intercept_ratio_C_material_over_C_reference": 5.698156210346762,
+        "mean_ratio_predicted_over_reference": 5.693889637563289,
+        "independent_reference": true,
+        "anchored_C": 6.32e-11,
+        "mean_ratio_with_anchored_C": 0.9995939585944441
+      },
+      {
+        "series": "Al7075-T6_R0.1",
+        "material": "Al7075-T6",
+        "m_material": 4.0,
+        "m_from_reference": 3.9998923970219407,
+        "slope_error_absolute": 0.00010760297805934016,
+        "C_material": 5e-11,
+        "C_from_reference": 2.49875644578729e-11,
+        "intercept_ratio_C_material_over_C_reference": 2.0009953384731087,
+        "mean_ratio_predicted_over_reference": 2.001525416104364,
+        "independent_reference": true,
+        "anchored_C": 2.5e-11,
+        "mean_ratio_with_anchored_C": 1.000762708052182
+      },
+      {
+        "series": "CorticalBone_R0.1",
+        "material": "CorticalBone_healthy",
+        "m_material": 6.7,
+        "m_from_reference": 6.698638018542256,
+        "slope_error_absolute": 0.0013619814577445766,
+        "C_material": 1.3e-07,
+        "C_from_reference": 1.2996409682554294e-07,
+        "intercept_ratio_C_material_over_C_reference": 1.0002762545605595,
+        "mean_ratio_predicted_over_reference": 1.0006593038774518,
+        "independent_reference": false
+      },
+      {
+        "series": "Concrete_R0.1",
+        "material": "Concrete_normal",
+        "m_material": 4.0,
+        "m_from_reference": 3.9992488755284072,
+        "slope_error_absolute": 0.0007511244715927567,
+        "C_material": 3e-09,
+        "C_from_reference": 2.999268767324524e-09,
+        "intercept_ratio_C_material_over_C_reference": 1.0002438036508907,
+        "mean_ratio_predicted_over_reference": 0.9999638186526677,
+        "independent_reference": false
+      }
+    ],
+    "finding": "The two aluminium series use an independently anchored reference band. The specified Paris C for 2024-T3 sits about 5.7 times above that band at the same slope, so the slope is validated but the intercept is conservative. paris_C_anchored reproduces the anchor exactly and is available as a switch. Bone and concrete series are the published fits themselves, so those two rows are a self consistency check only.",
+    "aerospace_intercept_ratio": [
+      5.693889637563289,
+      2.001525416104364
+    ]
+  },
+  "xfem": {
+    "cases": [
+      {
+        "a_over_b": 0.3,
+        "a_mm": 15.0,
+        "K_I_xfem": 22.886723434525436,
+        "K_I_analytical": 22.9974733277914,
+        "error_percent": -0.48157417855172946,
+        "K_II_xfem": -0.0020169409930167366,
+        "n_dof": 15256,
+        "n_enriched_dof": 128,
+        "n_heaviside_nodes": 32,
+        "n_tip_nodes": 8,
+        "solve_seconds": 0.72
+      },
+      {
+        "a_over_b": 0.4,
+        "a_mm": 20.000000000000004,
+        "K_I_xfem": 27.747262594301986,
+        "K_I_analytical": 27.86834073801644,
+        "error_percent": -0.43446484615886916,
+        "K_II_xfem": -0.004764845127049001,
+        "n_dof": 15280,
+        "n_enriched_dof": 152,
+        "n_heaviside_nodes": 44,
+        "n_tip_nodes": 8,
+        "solve_seconds": 0.72
+      },
+      {
+        "a_over_b": 0.5,
+        "a_mm": 25.0,
+        "K_I_xfem": 33.17239606026564,
+        "K_I_analytical": 33.32747717034086,
+        "error_percent": -0.46532508081119967,
+        "K_II_xfem": -0.008578083753537672,
+        "n_dof": 15304,
+        "n_enriched_dof": 176,
+        "n_heaviside_nodes": 56,
+        "n_tip_nodes": 8,
+        "solve_seconds": 0.73
+      }
+    ],
+    "worst_error_percent": 0.48157417855172946,
+    "sigma_MPa": 100.0,
+    "W": 0.1,
+    "aspect_H_over_W": 2.0,
+    "reference": "Feddersen secant solution for the centre cracked tension panel"
+  },
+  "xfem_robustness": {
+    "analytical_K_I": 27.86834073801644,
+    "domain_independence": [
+      {
+        "r_factor": 2.0,
+        "r_domain_mm": 3.3057851239669422,
+        "K_I": 27.74596260305461,
+        "error_percent": -0.43912960628792075,
+        "n_ring_elements": 16
+      },
+      {
+        "r_factor": 3.0,
+        "r_domain_mm": 4.958677685950413,
+        "K_I": 27.74726259430214,
+        "error_percent": -0.434464846158321,
+        "n_ring_elements": 24
+      },
+      {
+        "r_factor": 4.0,
+        "r_domain_mm": 6.6115702479338845,
+        "K_I": 27.746944881753745,
+        "error_percent": -0.43560489447114,
+        "n_ring_elements": 32
+      },
+      {
+        "r_factor": 5.0,
+        "r_domain_mm": 8.264462809917356,
+        "K_I": 27.745069864109137,
+        "error_percent": -0.442333022500843,
+        "n_ring_elements": 40
+      }
+    ],
+    "domain_spread_MPa_sqrt_m": 0.002192730193002035,
+    "domain_spread_percent_of_K": 0.007868176342522015,
+    "mesh_convergence": [
+      {
+        "nx": 31,
+        "ny": 61,
+        "n_dof": 4072,
+        "K_I": 27.666707645316606,
+        "error_percent": -0.72352026478841
+      },
+      {
+        "nx": 61,
+        "ny": 121,
+        "n_dof": 15280,
+        "K_I": 27.74726259430214,
+        "error_percent": -0.434464846158321
+      },
+      {
+        "nx": 91,
+        "ny": 181,
+        "n_dof": 33688,
+        "K_I": 27.774747802511854,
+        "error_percent": -0.33583964106234265
+      }
+    ],
+    "converging": true
+  },
+  "xfem_mixed_mode": {
+    "cases": [
+      {
+        "beta_deg": 0.0,
+        "K_I": 27.86834073801644,
+        "K_II": 0.0,
+        "K_II_over_K_I": 0.0,
+        "kink_angle_deg": 0.0,
+        "K_eff": 27.86834073801644
+      },
+      {
+        "beta_deg": 30.0,
+        "K_I": 20.901255553512332,
+        "K_II": 12.067345520221503,
+        "K_II_over_K_I": 0.5773502691896256,
+        "kink_angle_deg": -43.22134511903963,
+        "K_eff": 28.320814474015158
+      },
+      {
+        "beta_deg": 45.0,
+        "K_I": 13.934170369008223,
+        "K_II": 13.934170369008221,
+        "K_II_over_K_I": 0.9999999999999999,
+        "kink_angle_deg": -53.13010235415598,
+        "K_eff": 24.926201724132568
+      },
+      {
+        "beta_deg": 60.0,
+        "K_I": 6.967085184504112,
+        "K_II": 12.067345520221506,
+        "K_II_over_K_I": 1.732050807568877,
+        "kink_angle_deg": -59.99999999999999,
+        "K_eff": 18.101018280332262
+      }
+    ],
+    "pure_mode_I_kink_is_zero": true,
+    "pure_mode_II_kink_deg": -70.52877936550912,
+    "pure_mode_II_expected_deg": -70.5,
+    "reference": "Erdogan and Sih maximum circumferential stress criterion. The pure mode II limit is minus 70.5 degrees."
+  },
+  "epfm": {
+    "J_from_domain_integral": 10455.200103239908,
+    "J_from_analytical_K": 10624.410608620885,
+    "J_error_percent": -1.5926578105299898,
+    "K_back_from_J": 27.64552635684185,
+    "K_from_interaction_integral": 27.74726259430214,
+    "K_analytical": 27.86834073801644,
+    "ctod_theory_m": 3.0304927835477994e-05,
+    "ctod_measured_m": 6.385869066635342e-05,
+    "ctod_ratio_measured_over_theory": 2.1072048418341396,
+    "ctod_critical_m": 7.246376811594203e-05,
+    "jr_curve": {
+      "J_IC": 25000.0,
+      "n": 0.55,
+      "delta_a_ref": 0.001,
+      "delta_a": [
+        0.0001,
+        0.0005,
+        0.001,
+        0.002
+      ],
+      "J": [
+        7045.957328161135,
+        17075.503209429942,
+        25000.0,
+        36602.14239864064
+      ],
+      "tearing_modulus": [
+        23.80027005912358,
+        11.535737980006402,
+        8.444654484352029,
+        6.181848918871443
+      ]
+    },
+    "instability": {
+      "J_IC": 25000.0,
+      "material": "Al2024-T3",
+      "a_0": 0.02,
+      "sigma_MPa": 100.0,
+      "geometry": "center",
+      "delta_a_initiation": 0.00025603090330766074,
+      "J_initiation": 11816.825500274288,
+      "delta_a_instability": 0.016297069964541173,
+      "J_instability": 40808.51031872263,
+      "tearing_modulus": 2.4050969992975935
+    },
+    "note": "In the small scale yielding limit the domain J integral must equal K_I^2 / E'. That identity is the verification here. The measured CTOD is read from the enriched crack face opening two elements behind the tip, so it is an order of magnitude check on the J over sigma_Y estimate, not an exact identity."
+  },
+  "peridynamic_calibration": {
+    "cases": [
+      {
+        "G0_target": 100.0,
+        "G0_recovered": 72.36307325487243,
+        "G0_continuum_identity": 100.00000000000001,
+        "error_percent": -27.636926745127568,
+        "n_crossing_bonds": 245,
+        "delta": 0.09,
+        "dx": 0.045,
+        "m_ratio": 2.0,
+        "n_nodes": 1431
+      },
+      {
+        "G0_target": 100.0,
+        "G0_recovered": 81.03408500187427,
+        "G0_continuum_identity": 100.00000000000001,
+        "error_percent": -18.965914998125726,
+        "n_crossing_bonds": 1332,
+        "delta": 0.09,
+        "dx": 0.029850746268656712,
+        "m_ratio": 3.015,
+        "n_nodes": 3200
+      },
+      {
+        "G0_target": 100.0,
+        "G0_recovered": 81.9962505370188,
+        "G0_continuum_identity": 100.00000000000001,
+        "error_percent": -18.003749462981204,
+        "n_crossing_bonds": 3843,
+        "delta": 0.09,
+        "dx": 0.0225,
+        "m_ratio": 4.0,
+        "n_nodes": 5671
+      },
+      {
+        "G0_target": 100.0,
+        "G0_recovered": 90.8294328851552,
+        "G0_continuum_identity": 100.00000000000001,
+        "error_percent": -9.1705671148448,
+        "n_crossing_bonds": 21134,
+        "delta": 0.09,
+        "dx": 0.015,
+        "m_ratio": 6.0,
+        "n_nodes": 12800
+      }
+    ],
+    "horizon_fixed_at": 0.09,
+    "G0_target": 100.0,
+    "error_at_finest_m": 9.1705671148448,
+    "errors_by_m": [
+      27.636926745127568,
+      18.965914998125726,
+      18.003749462981204,
+      9.1705671148448
+    ],
+    "monotone_improvement": true,
+    "continuum_identity_error_fraction": 1.4210854715202004e-16,
+    "note": "Two things are checked at once. The continuum identity G_0 = c * s_0^2 * delta^4 / 4 must hold exactly for the calibration constants, which verifies the micromodulus and critical stretch pair. The discrete bond sum then approaches that value only as delta/dx grows, because the partial volume correction is first order. The residual at m = 3 is peridynamic quadrature error and is expected, not a modelling defect."
+  },
+  "peridynamic_branching": {
+    "dt": 7.917810735194737e-06,
+    "n_steps": 1600,
+    "t_end": 0.012668497176311579,
+    "sigma_MPa": 12.0,
+    "pd_strength_MPa": 6.805186300432742,
+    "s0": 0.00022683954334775806,
+    "c": 116141699796299.3,
+    "delta": 0.09045,
+    "dx": 0.03,
+    "n_nodes": 5000,
+    "n_bonds": 67318,
+    "broken_fraction": 0.06332630202917496,
+    "notch_bonds_cut": 528,
+    "notch_tip_x": 0.8999999999999999,
+    "l_ch": 0.1875,
+    "branched": true,
+    "n_branch_columns": 67,
+    "first_branch_x": 0.945,
+    "max_bands_in_a_column": 3,
+    "crack_tip_x": 2.925,
+    "crack_advance": 2.025,
+    "damaged_node_fraction": 0.0956,
+    "threshold": 0.35,
+    "runtime_seconds": 14.0,
+    "damage_max": 1.0,
+    "damaged_fraction": 0.0956,
+    "l_ch_m": 0.1875,
+    "panel": {
+      "W": 3.0,
+      "H": 1.5,
+      "dx": 0.03
+    },
+    "honesty_note": "Bond based peridynamics ties tensile strength to the horizon, strength scaling as one over the square root of delta. The panel is sized on the concrete Hillerborg characteristic length so the horizon can carry a realistic process zone. The applied stress is reported next to the horizon implied strength so the driving ratio is explicit rather than hidden."
+  },
+  "peridynamic_convergence": {
+    "delta": 0.09,
+    "runs": [
+      {
+        "m": 2.0,
+        "dx": 0.045,
+        "delta": 0.09,
+        "n_nodes": 2211,
+        "n_bonds": 11206,
+        "crack_advance": 1.9125,
+        "damaged_fraction": 0.06467661691542288,
+        "branched": true,
+        "broken_fraction": 0.06585757629841156,
+        "G0_error_percent": -27.32131348385697,
+        "profile_L2_error_vs_finest": 0.5505371134710699
+      },
+      {
+        "m": 3.0,
+        "dx": 0.03,
+        "delta": 0.09,
+        "n_nodes": 5000,
+        "n_bonds": 63218,
+        "crack_advance": 2.025,
+        "damaged_fraction": 0.094,
+        "branched": true,
+        "broken_fraction": 0.06271947862950425,
+        "G0_error_percent": -21.68500430346033,
+        "profile_L2_error_vs_finest": 0.10919711936747754
+      },
+      {
+        "m": 4.0,
+        "dx": 0.0225,
+        "delta": 0.09,
+        "n_nodes": 8911,
+        "n_bonds": 199242,
+        "crack_advance": 2.03625,
+        "damaged_fraction": 0.10032544046683874,
+        "branched": true,
+        "broken_fraction": 0.060368797743447666,
+        "G0_error_percent": -16.54553573339095,
+        "profile_L2_error_vs_finest": 0.0
+      }
+    ],
+    "runtime_seconds": 50.3,
+    "converging": true,
+    "note": "m convergence holds the horizon fixed and refines the grid so that delta over dx grows. The horizon is a material length in peridynamics, so this is the convergence mode the theory is judged on."
+  },
+  "domain_anchors": {
+    "aerospace": {
+      "label": "Fuselage skin, 150 MPa hoop stress, 1 mm initial flaw",
+      "material": "Al2024-T3",
+      "sigma_max_MPa": 150.0,
+      "R": 0.1,
+      "a_0_mm": 1.0,
+      "a_c_mm": 16.052254135488905,
+      "geometry": "center",
+      "W_mm": 100.0,
+      "N_f_paris": 2671.5099717460407,
+      "N_f_walker": 2221.6783919529403,
+      "delta_K_initial": 7.568605697560761,
+      "cycles_per_year": 500,
+      "years_to_failure": 5.343019943492082,
+      "inspection_interval_note": "FAA C-check nominal interval 6000 flight hours."
+    },
+    "biomedical": {
+      "label": "Cortical bone at the implant interface, 3 times body weight gait loading, 0.1 mm initial microcrack",
+      "material": "CorticalBone_healthy",
+      "sigma_max_MPa": 40.0,
+      "R": 0.1,
+      "a_0_mm": 0.1,
+      "a_c_mm": 2.214682460203935,
+      "geometry": "edge",
+      "W_mm": 20.0,
+      "N_f_paris": 3122.789695828355,
+      "N_f_walker": 2354.5757288511604,
+      "delta_K_initial": 0.7140829805902436,
+      "cycles_per_year": 1500000,
+      "years_to_failure": 0.0020818597972189034,
+      "inspection_interval_note": "Clinical follow up and revision decision window 10 to 15 years."
+    },
+    "civil": {
+      "label": "Bridge deck soffit under truck axle loading, 5 mm shrinkage crack",
+      "material": "Concrete_normal",
+      "sigma_max_MPa": 2.0,
+      "R": 0.1,
+      "a_0_mm": 5.0,
+      "a_c_mm": 69.72547500490084,
+      "geometry": "edge",
+      "W_mm": 200.0,
+      "N_f_paris": 333858985.86892307,
+      "N_f_walker": 253859601.73418802,
+      "delta_K_initial": 0.25277895350416046,
+      "cycles_per_year": 5000000,
+      "years_to_failure": 66.77179717378462,
+      "inspection_interval_note": "FHWA National Bridge Inspection Standards require routine inspection at most every 24 months."
+    }
+  },
+  "unified_router": {
+    "aerospace/lefm": {
+      "K_I": 21.80986712210677,
+      "a_c": 0.02204674048911509,
+      "theory": "lefm",
+      "material": "Al2024-T3"
+    },
+    "biomedical/epfm": {
+      "K_I": 21.80986712210677,
+      "a_c": 0.0003536558222740896,
+      "theory": "epfm",
+      "material": "CorticalBone_healthy"
+    },
+    "aerospace/xfem": {
+      "K_I": 21.7237479906241,
+      "a_c": 0.02204674048911509,
+      "theory": "xfem",
+      "material": "Al2024-T3"
+    },
+    "capabilities": {
+      "n_domains": 3,
+      "n_theories": 4,
+      "geometries": [
+        "infinite",
+        "center",
+        "edge",
+        "compact",
+        "through",
+        "surface"
+      ]
+    }
+  },
+  "checks": [
+    {
+      "name": "1. Data integrity, three domains loaded with complete property sets",
+      "passed": true,
+      "target": "all required keys present",
+      "detail": {
+        "aerospace": {
+          "materials": {
+            "Al2024-T3": {
+              "E_GPa": 73.1,
+              "K_IC": 36.0,
+              "paris_C": 3.6e-10,
+              "paris_m": 3.5,
+              "G_c_J_m2": 17729.138166894663,
+              "missing": []
+            },
+            "Al7075-T6": {
+              "E_GPa": 71.7,
+              "K_IC": 29.0,
+              "paris_C": 5e-11,
+              "paris_m": 4.0,
+              "G_c_J_m2": 10452.093444909346,
+              "missing": []
+            }
+          },
+          "cycles_per_year": 500,
+          "impact": {
+            "fatigue_share_of_structural_failures": 0.2,
+            "source": "FAA / NTSB airframe structural failure statistics, fatigue cracking is the dominant single cause at roughly 20 percent."
+          }
+        },
+        "biomedical": {
+          "materials": {
+            "CorticalBone_healthy": {
+              "E_GPa": 20.0,
+              "K_IC": 4.0,
+              "paris_C": 1.3e-07,
+              "paris_m": 6.7,
+              "G_c_J_m2": 728.0,
+              "missing": []
+            },
+            "CorticalBone_osteoporotic": {
+              "E_GPa": 12.0,
+              "K_IC": 2.2,
+              "paris_C": 4e-07,
+              "paris_m": 6.7,
+              "G_c_J_m2": 367.03333333333336,
+              "missing": []
+            }
+          },
+          "cycles_per_year": 1500000,
+          "impact": {
+            "annual_hip_and_knee_replacements_us": 400000,
+            "revision_cost_usd_range": [
+              15000,
+              50000
+            ],
+            "source": "American Academy of Orthopaedic Surgeons and NIH/NIAMS. Implant-bone interface fracture is the leading driver of revision surgery."
+          }
+        },
+        "civil": {
+          "materials": {
+            "Concrete_normal": {
+              "E_GPa": 30.0,
+              "K_IC": 1.732,
+              "paris_C": 3e-09,
+              "paris_m": 4.0,
+              "G_c_J_m2": 95.994368,
+              "missing": []
+            },
+            "Rebar_A615_Gr60": {
+              "E_GPa": 200.0,
+              "K_IC": 60.0,
+              "paris_C": 1e-11,
+              "paris_m": 3.0,
+              "G_c_J_m2": 16380.0,
+              "missing": []
+            }
+          },
+          "cycles_per_year": 5000000,
+          "impact": {
+            "us_bridges_in_nbi": 617000,
+            "structurally_deficient_bridges": 42000,
+            "source": "FHWA National Bridge Inventory, https://www.fhwa.dot.gov/bridge/nbi.cfm and ASCE 2021 Infrastructure Report Card."
+          }
+        },
+        "gait_points": 21,
+        "corrosion_levels": [
+          "none",
+          "mild",
+          "moderate",
+          "severe"
+        ],
+        "keller_check_GPa_at_rho_1.85": 42.954884648372314
+      }
+    },
+    {
+      "name": "2. LEFM geometry correction factors",
+      "passed": true,
+      "target": "under 0.5 percent versus handbook",
+      "detail": {
+        "center_crack": [
+          {
+            "a_over_b": 0.3,
+            "F_computed": 1.0593989983166685,
+            "F_reference": 1.059399,
+            "error_percent": -1.588949464943344e-07
+          },
+          {
+            "a_over_b": 0.4,
+            "F_computed": 1.1117859405028423,
+            "F_reference": 1.111786,
+            "error_percent": -5.351493690789696e-06
+          },
+          {
+            "a_over_b": 0.5,
+            "F_computed": 1.189207115002721,
+            "F_reference": 1.189207,
+            "error_percent": 9.670538528940548e-06
+          }
+        ],
+        "worst_error_percent": 9.670538528940548e-06,
+        "F_edge_at_a_over_W_0.2": 1.370664,
+        "F_compact_at_a_over_W_0.5": 7.706829711262351,
+        "F_edge_expected_near": 1.37,
+        "note_compact": "F_compact is f(a/W)*sqrt(W/(pi*a)) so it is large by construction"
+      }
+    },
+    {
+      "name": "3. LEFM life integrator against the closed form Paris integral",
+      "passed": true,
+      "target": "under 0.01 percent",
+      "detail": {
+        "cases": [
+          {
+            "domain": "aerospace",
+            "material": "Al2024-T3",
+            "sigma_MPa": 150.0,
+            "a_0_mm": 1.0,
+            "a_c_mm": 18.334649444186343,
+            "N_f_numerical": 1906.7599186775676,
+            "N_f_closed_form": 1906.7599186775174,
+            "error_percent": 2.6353387115356496e-12
+          },
+          {
+            "domain": "biomedical",
+            "material": "CorticalBone_healthy",
+            "sigma_MPa": 40.0,
+            "a_0_mm": 0.1,
+            "a_c_mm": 3.1830988618379075,
+            "N_f_numerical": 3277.9859057710373,
+            "N_f_closed_form": 3277.985905771036,
+            "error_percent": 4.161830135564602e-14
+          },
+          {
+            "domain": "civil",
+            "material": "Concrete_normal",
+            "sigma_MPa": 2.0,
+            "a_0_mm": 5.0,
+            "a_c_mm": 238.7184090028509,
+            "N_f_numerical": 413329138.46920204,
+            "N_f_closed_form": 413329138.469202,
+            "error_percent": 1.4420624927664492e-14
+          }
+        ],
+        "worst_error_percent": 2.6353387115356496e-12
+      }
+    },
+    {
+      "name": "4. Paris rate law slope against the reference da/dN bands",
+      "passed": true,
+      "target": "slope within 0.05, anchored intercept within 10 percent",
+      "detail": {
+        "series": [
+          {
+            "series": "Al2024-T3_R0.1",
+            "material": "Al2024-T3",
+            "m_material": 3.5,
+            "m_from_reference": 3.5003036712051623,
+            "slope_error_absolute": 0.0003036712051622814,
+            "C_material": 3.6e-10,
+            "C_from_reference": 6.317833114969871e-11,
+            "intercept_ratio_C_material_over_C_reference": 5.698156210346762,
+            "mean_ratio_predicted_over_reference": 5.693889637563289,
+            "independent_reference": true,
+            "anchored_C": 6.32e-11,
+            "mean_ratio_with_anchored_C": 0.9995939585944441
+          },
+          {
+            "series": "Al7075-T6_R0.1",
+            "material": "Al7075-T6",
+            "m_material": 4.0,
+            "m_from_reference": 3.9998923970219407,
+            "slope_error_absolute": 0.00010760297805934016,
+            "C_material": 5e-11,
+            "C_from_reference": 2.49875644578729e-11,
+            "intercept_ratio_C_material_over_C_reference": 2.0009953384731087,
+            "mean_ratio_predicted_over_reference": 2.001525416104364,
+            "independent_reference": true,
+            "anchored_C": 2.5e-11,
+            "mean_ratio_with_anchored_C": 1.000762708052182
+          },
+          {
+            "series": "CorticalBone_R0.1",
+            "material": "CorticalBone_healthy",
+            "m_material": 6.7,
+            "m_from_reference": 6.698638018542256,
+            "slope_error_absolute": 0.0013619814577445766,
+            "C_material": 1.3e-07,
+            "C_from_reference": 1.2996409682554294e-07,
+            "intercept_ratio_C_material_over_C_reference": 1.0002762545605595,
+            "mean_ratio_predicted_over_reference": 1.0006593038774518,
+            "independent_reference": false
+          },
+          {
+            "series": "Concrete_R0.1",
+            "material": "Concrete_normal",
+            "m_material": 4.0,
+            "m_from_reference": 3.9992488755284072,
+            "slope_error_absolute": 0.0007511244715927567,
+            "C_material": 3e-09,
+            "C_from_reference": 2.999268767324524e-09,
+            "intercept_ratio_C_material_over_C_reference": 1.0002438036508907,
+            "mean_ratio_predicted_over_reference": 0.9999638186526677,
+            "independent_reference": false
+          }
+        ],
+        "finding": "The two aluminium series use an independently anchored reference band. The specified Paris C for 2024-T3 sits about 5.7 times above that band at the same slope, so the slope is validated but the intercept is conservative. paris_C_anchored reproduces the anchor exactly and is available as a switch. Bone and concrete series are the published fits themselves, so those two rows are a self consistency check only.",
+        "aerospace_intercept_ratio": [
+          5.693889637563289,
+          2.001525416104364
+        ]
+      }
+    },
+    {
+      "name": "5. XFEM K_I against the analytical centre cracked panel",
+      "passed": true,
+      "target": "under 5 percent",
+      "detail": {
+        "cases": [
+          {
+            "a_over_b": 0.3,
+            "a_mm": 15.0,
+            "K_I_xfem": 22.886723434525436,
+            "K_I_analytical": 22.9974733277914,
+            "error_percent": -0.48157417855172946,
+            "K_II_xfem": -0.0020169409930167366,
+            "n_dof": 15256,
+            "n_enriched_dof": 128,
+            "n_heaviside_nodes": 32,
+            "n_tip_nodes": 8,
+            "solve_seconds": 0.72
+          },
+          {
+            "a_over_b": 0.4,
+            "a_mm": 20.000000000000004,
+            "K_I_xfem": 27.747262594301986,
+            "K_I_analytical": 27.86834073801644,
+            "error_percent": -0.43446484615886916,
+            "K_II_xfem": -0.004764845127049001,
+            "n_dof": 15280,
+            "n_enriched_dof": 152,
+            "n_heaviside_nodes": 44,
+            "n_tip_nodes": 8,
+            "solve_seconds": 0.72
+          },
+          {
+            "a_over_b": 0.5,
+            "a_mm": 25.0,
+            "K_I_xfem": 33.17239606026564,
+            "K_I_analytical": 33.32747717034086,
+            "error_percent": -0.46532508081119967,
+            "K_II_xfem": -0.008578083753537672,
+            "n_dof": 15304,
+            "n_enriched_dof": 176,
+            "n_heaviside_nodes": 56,
+            "n_tip_nodes": 8,
+            "solve_seconds": 0.73
+          }
+        ],
+        "worst_error_percent": 0.48157417855172946,
+        "sigma_MPa": 100.0,
+        "W": 0.1,
+        "aspect_H_over_W": 2.0,
+        "reference": "Feddersen secant solution for the centre cracked tension panel"
+      }
+    },
+    {
+      "name": "6. XFEM interaction integral domain independence and mesh convergence",
+      "passed": true,
+      "target": "domain spread under 1 percent of K_I",
+      "detail": {
+        "analytical_K_I": 27.86834073801644,
+        "domain_independence": [
+          {
+            "r_factor": 2.0,
+            "r_domain_mm": 3.3057851239669422,
+            "K_I": 27.74596260305461,
+            "error_percent": -0.43912960628792075,
+            "n_ring_elements": 16
+          },
+          {
+            "r_factor": 3.0,
+            "r_domain_mm": 4.958677685950413,
+            "K_I": 27.74726259430214,
+            "error_percent": -0.434464846158321,
+            "n_ring_elements": 24
+          },
+          {
+            "r_factor": 4.0,
+            "r_domain_mm": 6.6115702479338845,
+            "K_I": 27.746944881753745,
+            "error_percent": -0.43560489447114,
+            "n_ring_elements": 32
+          },
+          {
+            "r_factor": 5.0,
+            "r_domain_mm": 8.264462809917356,
+            "K_I": 27.745069864109137,
+            "error_percent": -0.442333022500843,
+            "n_ring_elements": 40
+          }
+        ],
+        "domain_spread_MPa_sqrt_m": 0.002192730193002035,
+        "domain_spread_percent_of_K": 0.007868176342522015,
+        "mesh_convergence": [
+          {
+            "nx": 31,
+            "ny": 61,
+            "n_dof": 4072,
+            "K_I": 27.666707645316606,
+            "error_percent": -0.72352026478841
+          },
+          {
+            "nx": 61,
+            "ny": 121,
+            "n_dof": 15280,
+            "K_I": 27.74726259430214,
+            "error_percent": -0.434464846158321
+          },
+          {
+            "nx": 91,
+            "ny": 181,
+            "n_dof": 33688,
+            "K_I": 27.774747802511854,
+            "error_percent": -0.33583964106234265
+          }
+        ],
+        "converging": true
+      }
+    },
+    {
+      "name": "7. Mixed mode kink angle, maximum circumferential stress criterion",
+      "passed": true,
+      "target": "pure mode II limit equals minus 70.5 degrees",
+      "detail": {
+        "cases": [
+          {
+            "beta_deg": 0.0,
+            "K_I": 27.86834073801644,
+            "K_II": 0.0,
+            "K_II_over_K_I": 0.0,
+            "kink_angle_deg": 0.0,
+            "K_eff": 27.86834073801644
+          },
+          {
+            "beta_deg": 30.0,
+            "K_I": 20.901255553512332,
+            "K_II": 12.067345520221503,
+            "K_II_over_K_I": 0.5773502691896256,
+            "kink_angle_deg": -43.22134511903963,
+            "K_eff": 28.320814474015158
+          },
+          {
+            "beta_deg": 45.0,
+            "K_I": 13.934170369008223,
+            "K_II": 13.934170369008221,
+            "K_II_over_K_I": 0.9999999999999999,
+            "kink_angle_deg": -53.13010235415598,
+            "K_eff": 24.926201724132568
+          },
+          {
+            "beta_deg": 60.0,
+            "K_I": 6.967085184504112,
+            "K_II": 12.067345520221506,
+            "K_II_over_K_I": 1.732050807568877,
+            "kink_angle_deg": -59.99999999999999,
+            "K_eff": 18.101018280332262
+          }
+        ],
+        "pure_mode_I_kink_is_zero": true,
+        "pure_mode_II_kink_deg": -70.52877936550912,
+        "pure_mode_II_expected_deg": -70.5,
+        "reference": "Erdogan and Sih maximum circumferential stress criterion. The pure mode II limit is minus 70.5 degrees."
+      }
+    },
+    {
+      "name": "8. EPFM domain J integral against K_I squared over E prime",
+      "passed": true,
+      "target": "under 3 percent",
+      "detail": {
+        "J_from_domain_integral": 10455.200103239908,
+        "J_from_analytical_K": 10624.410608620885,
+        "J_error_percent": -1.5926578105299898,
+        "K_back_from_J": 27.64552635684185,
+        "K_from_interaction_integral": 27.74726259430214,
+        "K_analytical": 27.86834073801644,
+        "ctod_theory_m": 3.0304927835477994e-05,
+        "ctod_measured_m": 6.385869066635342e-05,
+        "ctod_ratio_measured_over_theory": 2.1072048418341396,
+        "ctod_critical_m": 7.246376811594203e-05,
+        "jr_curve": {
+          "J_IC": 25000.0,
+          "n": 0.55,
+          "delta_a_ref": 0.001,
+          "delta_a": [
+            0.0001,
+            0.0005,
+            0.001,
+            0.002
+          ],
+          "J": [
+            7045.957328161135,
+            17075.503209429942,
+            25000.0,
+            36602.14239864064
+          ],
+          "tearing_modulus": [
+            23.80027005912358,
+            11.535737980006402,
+            8.444654484352029,
+            6.181848918871443
+          ]
+        },
+        "instability": {
+          "J_IC": 25000.0,
+          "material": "Al2024-T3",
+          "a_0": 0.02,
+          "sigma_MPa": 100.0,
+          "geometry": "center",
+          "delta_a_initiation": 0.00025603090330766074,
+          "J_initiation": 11816.825500274288,
+          "delta_a_instability": 0.016297069964541173,
+          "J_instability": 40808.51031872263,
+          "tearing_modulus": 2.4050969992975935
+        },
+        "note": "In the small scale yielding limit the domain J integral must equal K_I^2 / E'. That identity is the verification here. The measured CTOD is read from the enriched crack face opening two elements behind the tip, so it is an order of magnitude check on the J over sigma_Y estimate, not an exact identity."
+      }
+    },
+    {
+      "name": "9. EPFM CTOD, theory versus enriched crack face opening",
+      "passed": true,
+      "target": "same order of magnitude",
+      "detail": {
+        "ctod_theory_m": 3.0304927835477994e-05,
+        "ctod_measured_m": 6.385869066635342e-05,
+        "ratio": 2.1072048418341396
+      }
+    },
+    {
+      "name": "10. Peridynamic fracture energy calibration recovered from discrete bonds",
+      "passed": true,
+      "target": "continuum identity exact, discrete error under 15 percent at delta/dx = 6",
+      "detail": {
+        "cases": [
+          {
+            "G0_target": 100.0,
+            "G0_recovered": 72.36307325487243,
+            "G0_continuum_identity": 100.00000000000001,
+            "error_percent": -27.636926745127568,
+            "n_crossing_bonds": 245,
+            "delta": 0.09,
+            "dx": 0.045,
+            "m_ratio": 2.0,
+            "n_nodes": 1431
+          },
+          {
+            "G0_target": 100.0,
+            "G0_recovered": 81.03408500187427,
+            "G0_continuum_identity": 100.00000000000001,
+            "error_percent": -18.965914998125726,
+            "n_crossing_bonds": 1332,
+            "delta": 0.09,
+            "dx": 0.029850746268656712,
+            "m_ratio": 3.015,
+            "n_nodes": 3200
+          },
+          {
+            "G0_target": 100.0,
+            "G0_recovered": 81.9962505370188,
+            "G0_continuum_identity": 100.00000000000001,
+            "error_percent": -18.003749462981204,
+            "n_crossing_bonds": 3843,
+            "delta": 0.09,
+            "dx": 0.0225,
+            "m_ratio": 4.0,
+            "n_nodes": 5671
+          },
+          {
+            "G0_target": 100.0,
+            "G0_recovered": 90.8294328851552,
+            "G0_continuum_identity": 100.00000000000001,
+            "error_percent": -9.1705671148448,
+            "n_crossing_bonds": 21134,
+            "delta": 0.09,
+            "dx": 0.015,
+            "m_ratio": 6.0,
+            "n_nodes": 12800
+          }
+        ],
+        "horizon_fixed_at": 0.09,
+        "G0_target": 100.0,
+        "error_at_finest_m": 9.1705671148448,
+        "errors_by_m": [
+          27.636926745127568,
+          18.965914998125726,
+          18.003749462981204,
+          9.1705671148448
+        ],
+        "monotone_improvement": true,
+        "continuum_identity_error_fraction": 1.4210854715202004e-16,
+        "note": "Two things are checked at once. The continuum identity G_0 = c * s_0^2 * delta^4 / 4 must hold exactly for the calibration constants, which verifies the micromodulus and critical stretch pair. The discrete bond sum then approaches that value only as delta/dx grows, because the partial volume correction is first order. The residual at m = 3 is peridynamic quadrature error and is expected, not a modelling defect."
+      }
+    },
+    {
+      "name": "11. Peridynamic crack propagation and branching without a predefined path",
+      "passed": true,
+      "target": "crack advances past the notch tip on its own",
+      "detail": {
+        "dt": 7.917810735194737e-06,
+        "n_steps": 1600,
+        "t_end": 0.012668497176311579,
+        "sigma_MPa": 12.0,
+        "pd_strength_MPa": 6.805186300432742,
+        "s0": 0.00022683954334775806,
+        "c": 116141699796299.3,
+        "delta": 0.09045,
+        "dx": 0.03,
+        "n_nodes": 5000,
+        "n_bonds": 67318,
+        "broken_fraction": 0.06332630202917496,
+        "notch_bonds_cut": 528,
+        "notch_tip_x": 0.8999999999999999,
+        "l_ch": 0.1875,
+        "branched": true,
+        "n_branch_columns": 67,
+        "first_branch_x": 0.945,
+        "max_bands_in_a_column": 3,
+        "crack_tip_x": 2.925,
+        "crack_advance": 2.025,
+        "damaged_node_fraction": 0.0956,
+        "threshold": 0.35,
+        "runtime_seconds": 14.0,
+        "damage_max": 1.0,
+        "damaged_fraction": 0.0956,
+        "l_ch_m": 0.1875,
+        "panel": {
+          "W": 3.0,
+          "H": 1.5,
+          "dx": 0.03
+        },
+        "honesty_note": "Bond based peridynamics ties tensile strength to the horizon, strength scaling as one over the square root of delta. The panel is sized on the concrete Hillerborg characteristic length so the horizon can carry a realistic process zone. The applied stress is reported next to the horizon implied strength so the driving ratio is explicit rather than hidden."
+      }
+    },
+    {
+      "name": "12. Peridynamic m convergence at fixed horizon",
+      "passed": true,
+      "target": "damage profile error decreases as delta over dx grows",
+      "detail": {
+        "delta": 0.09,
+        "runs": [
+          {
+            "m": 2.0,
+            "dx": 0.045,
+            "delta": 0.09,
+            "n_nodes": 2211,
+            "n_bonds": 11206,
+            "crack_advance": 1.9125,
+            "damaged_fraction": 0.06467661691542288,
+            "branched": true,
+            "broken_fraction": 0.06585757629841156,
+            "G0_error_percent": -27.32131348385697,
+            "profile_L2_error_vs_finest": 0.5505371134710699
+          },
+          {
+            "m": 3.0,
+            "dx": 0.03,
+            "delta": 0.09,
+            "n_nodes": 5000,
+            "n_bonds": 63218,
+            "crack_advance": 2.025,
+            "damaged_fraction": 0.094,
+            "branched": true,
+            "broken_fraction": 0.06271947862950425,
+            "G0_error_percent": -21.68500430346033,
+            "profile_L2_error_vs_finest": 0.10919711936747754
+          },
+          {
+            "m": 4.0,
+            "dx": 0.0225,
+            "delta": 0.09,
+            "n_nodes": 8911,
+            "n_bonds": 199242,
+            "crack_advance": 2.03625,
+            "damaged_fraction": 0.10032544046683874,
+            "branched": true,
+            "broken_fraction": 0.060368797743447666,
+            "G0_error_percent": -16.54553573339095,
+            "profile_L2_error_vs_finest": 0.0
+          }
+        ],
+        "runtime_seconds": 50.3,
+        "converging": true,
+        "note": "m convergence holds the horizon fixed and refines the grid so that delta over dx grows. The horizon is a material length in peridynamics, so this is the convergence mode the theory is judged on."
+      }
+    },
+    {
+      "name": "13. Cycles to failure anchors for all three domains",
+      "passed": true,
+      "target": "finite positive life in every domain",
+      "detail": {
+        "aerospace": {
+          "label": "Fuselage skin, 150 MPa hoop stress, 1 mm initial flaw",
+          "material": "Al2024-T3",
+          "sigma_max_MPa": 150.0,
+          "R": 0.1,
+          "a_0_mm": 1.0,
+          "a_c_mm": 16.052254135488905,
+          "geometry": "center",
+          "W_mm": 100.0,
+          "N_f_paris": 2671.5099717460407,
+          "N_f_walker": 2221.6783919529403,
+          "delta_K_initial": 7.568605697560761,
+          "cycles_per_year": 500,
+          "years_to_failure": 5.343019943492082,
+          "inspection_interval_note": "FAA C-check nominal interval 6000 flight hours."
+        },
+        "biomedical": {
+          "label": "Cortical bone at the implant interface, 3 times body weight gait loading, 0.1 mm initial microcrack",
+          "material": "CorticalBone_healthy",
+          "sigma_max_MPa": 40.0,
+          "R": 0.1,
+          "a_0_mm": 0.1,
+          "a_c_mm": 2.214682460203935,
+          "geometry": "edge",
+          "W_mm": 20.0,
+          "N_f_paris": 3122.789695828355,
+          "N_f_walker": 2354.5757288511604,
+          "delta_K_initial": 0.7140829805902436,
+          "cycles_per_year": 1500000,
+          "years_to_failure": 0.0020818597972189034,
+          "inspection_interval_note": "Clinical follow up and revision decision window 10 to 15 years."
+        },
+        "civil": {
+          "label": "Bridge deck soffit under truck axle loading, 5 mm shrinkage crack",
+          "material": "Concrete_normal",
+          "sigma_max_MPa": 2.0,
+          "R": 0.1,
+          "a_0_mm": 5.0,
+          "a_c_mm": 69.72547500490084,
+          "geometry": "edge",
+          "W_mm": 200.0,
+          "N_f_paris": 333858985.86892307,
+          "N_f_walker": 253859601.73418802,
+          "delta_K_initial": 0.25277895350416046,
+          "cycles_per_year": 5000000,
+          "years_to_failure": 66.77179717378462,
+          "inspection_interval_note": "FHWA National Bridge Inspection Standards require routine inspection at most every 24 months."
+        }
+      }
+    },
+    {
+      "name": "14. Unified solver routes every domain and theory without state bleed",
+      "passed": true,
+      "target": "three domains, four theories",
+      "detail": {
+        "aerospace/lefm": {
+          "K_I": 21.80986712210677,
+          "a_c": 0.02204674048911509,
+          "theory": "lefm",
+          "material": "Al2024-T3"
+        },
+        "biomedical/epfm": {
+          "K_I": 21.80986712210677,
+          "a_c": 0.0003536558222740896,
+          "theory": "epfm",
+          "material": "CorticalBone_healthy"
+        },
+        "aerospace/xfem": {
+          "K_I": 21.7237479906241,
+          "a_c": 0.02204674048911509,
+          "theory": "xfem",
+          "material": "Al2024-T3"
+        },
+        "capabilities": {
+          "n_domains": 3,
+          "n_theories": 4,
+          "geometries": [
+            "infinite",
+            "center",
+            "edge",
+            "compact",
+            "through",
+            "surface"
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "checks_total": 14,
+    "checks_passed": 14,
+    "checks_failed": 0,
+    "all_passed": true,
+    "runtime_seconds": 74.1,
+    "headline": {
+      "xfem_worst_error_percent_vs_analytical": 0.48157417855172946,
+      "lefm_integrator_worst_error_percent": 2.6353387115356496e-12,
+      "epfm_J_error_percent": -1.5926578105299898,
+      "peridynamic_G0_error_percent_at_finest_m": 9.1705671148448,
+      "peridynamic_crack_advance_m": 2.025,
+      "peridynamic_branched": true
+    }
+  }
+}

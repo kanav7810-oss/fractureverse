@@ -1,0 +1,47 @@
+{
+  "description": "Reference da/dN versus delta_K points used to validate the LEFM Paris Law module.",
+  "validation_honesty_note": "The two aluminium series are anchored independently of the material database, on the widely cited mid range value da/dN = 2.0e-7 m/cycle at delta_K = 10 MPa*sqrt(m) for 2024-T3 in laboratory air at R = 0.1, with the published Paris slope carried through the rest of the range. Comparing the material database against them is therefore a genuine external check. The bone and concrete series are the published Paris fits themselves, so for those two domains the comparison is a self consistency check of the rate evaluator and the integrator, not independent data validation. Part 2 should not report the bone and concrete numbers as external validation.",
+  "units": {"delta_K": "MPa*sqrt(m)", "da_dN": "m/cycle"},
+  "anchor": {"material": "Al2024-T3", "delta_K": 10.0, "da_dN": 2.0e-7,
+             "source": "Commonly cited mid range growth rate for 2024-T3 sheet, R = 0.1, laboratory air. Equivalent to 2e-4 mm/cycle."},
+  "series": {
+    "Al2024-T3_R0.1": {
+      "source": "Anchored Paris band, m = 3.5 from NASA/TM-2002-211428, C back solved from the delta_K = 10 anchor as 6.32e-11",
+      "implied_C": 6.32e-11, "implied_m": 3.5,
+      "delta_K": [5.0, 7.0, 10.0, 14.0, 20.0, 28.0],
+      "da_dN":   [1.77e-8, 5.72e-8, 2.00e-7, 6.50e-7, 2.26e-6, 7.35e-6]
+    },
+    "Al7075-T6_R0.1": {
+      "source": "Anchored Paris band, m = 4.0, C back solved from da/dN = 2.5e-7 m/cycle at delta_K = 10",
+      "implied_C": 2.50e-11, "implied_m": 4.0,
+      "delta_K": [5.0, 7.0, 10.0, 14.0, 20.0, 26.0],
+      "da_dN":   [1.56e-8, 6.00e-8, 2.50e-7, 9.60e-7, 4.00e-6, 1.14e-5]
+    },
+    "CorticalBone_R0.1": {
+      "source": "Caler and Carter 1989, Journal of Biomechanics 22(6):625-635, human cortical bone, physiologic conditions",
+      "delta_K": [0.6, 0.9, 1.2, 1.6, 2.0, 2.6],
+      "da_dN":   [4.24e-9, 6.42e-8, 4.41e-7, 3.03e-6, 1.35e-5, 7.82e-5]
+    },
+    "Concrete_R0.1": {
+      "source": "Bazant and Xu 1991, ACI Materials Journal, size effect in fatigue fracture of concrete. Representative fit.",
+      "delta_K": [0.30, 0.45, 0.60, 0.85, 1.10, 1.40],
+      "da_dN":   [2.43e-11, 1.23e-10, 3.89e-10, 1.57e-9, 4.39e-9, 1.15e-8]
+    }
+  },
+  "geometry_benchmarks": {
+    "center_cracked_tension": {
+      "F_formula": "sqrt(sec(pi * a / W)) with a the half crack length and W the full plate width",
+      "source": "Feddersen 1966. Accuracy better than 0.3 percent for a/W below 0.35.",
+      "check_points_note": "a_over_b is the half crack length over the half width, so a/W_full is half of it. Values are sqrt(sec(pi*a/W_full)) evaluated exactly.",
+      "check_points": {"a_over_b_0.3": 1.059399, "a_over_b_0.4": 1.111786, "a_over_b_0.5": 1.189207}
+    },
+    "single_edge_notch_tension": {
+      "F_formula": "1.12 - 0.231*x + 10.55*x^2 - 21.72*x^3 + 30.39*x^4 with x = a/W",
+      "source": "Tada, Paris and Irwin, The Stress Analysis of Cracks Handbook, 3rd edition. Accuracy 0.5 percent for a/W below 0.6."
+    },
+    "compact_tension": {
+      "F_formula": "ASTM E399 f(a/W) applied as K = P/(B*sqrt(W)) * f(a/W)",
+      "source": "ASTM E399 standard test method for linear elastic plane strain fracture toughness."
+    }
+  }
+}

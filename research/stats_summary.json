@@ -1,0 +1,283 @@
+{
+ "part": 2,
+ "title": "FRACTUREVERSE Part 2, surrogates, physics informed learning and figures",
+ "units": {
+  "K": "MPa*sqrt(m)",
+  "stress": "Pa at every API boundary",
+  "J": "J/m^2",
+  "length": "m",
+  "da_dN": "m/cycle"
+ },
+ "domain_lives": {
+  "aerospace": {
+   "material": "Al2024-T3",
+   "sigma_max_MPa": 150.0,
+   "R": 0.1,
+   "a0_mm": 1.0,
+   "geometry": "center",
+   "W_mm": 100.0,
+   "cycles_per_year": 500,
+   "specified": {
+    "paris_C": 3.6e-10,
+    "N_f": 2671.5099717460407,
+    "a_c_mm": 16.052254135488905,
+    "years_to_failure": 5.343019943492082
+   },
+   "anchored": {
+    "paris_C": 6.32e-11,
+    "N_f": 15217.46186437618,
+    "a_c_mm": 16.052254135488905,
+    "years_to_failure": 30.43492372875236
+   },
+   "anchored_differs": true
+  },
+  "biomedical": {
+   "material": "CorticalBone_healthy",
+   "sigma_max_MPa": 40.0,
+   "R": 0.1,
+   "a0_mm": 0.1,
+   "geometry": "edge",
+   "W_mm": 20.0,
+   "cycles_per_year": 1500000,
+   "specified": {
+    "paris_C": 1.3e-07,
+    "N_f": 3122.789695828355,
+    "a_c_mm": 2.214682460203935,
+    "years_to_failure": 0.0020818597972189034
+   },
+   "anchored": {
+    "paris_C": 1.3e-07,
+    "N_f": 3122.789695828355,
+    "a_c_mm": 2.214682460203935,
+    "years_to_failure": 0.0020818597972189034
+   },
+   "anchored_differs": false
+  },
+  "civil": {
+   "material": "Concrete_normal",
+   "sigma_max_MPa": 2.0,
+   "R": 0.1,
+   "a0_mm": 5.0,
+   "geometry": "edge",
+   "W_mm": 200.0,
+   "cycles_per_year": 5000000,
+   "specified": {
+    "paris_C": 3e-09,
+    "N_f": 333858985.86892307,
+    "a_c_mm": 69.72547500490084,
+    "years_to_failure": 66.77179717378462
+   },
+   "anchored": {
+    "paris_C": 3e-09,
+    "N_f": 333858985.86892307,
+    "a_c_mm": 69.72547500490084,
+    "years_to_failure": 66.77179717378462
+   },
+   "anchored_differs": false
+  }
+ },
+ "paris_coefficient_used": {
+  "value_used_everywhere_in_part2": "specified",
+  "statement": "Every life number in Part 2 uses the specified Paris coefficient from the project brief. For 2024-T3 that is C = 3.6e-10, which is a factor 5.7 above the commonly cited anchor of da/dN = 2.0e-7 m/cycle at delta_K = 10 MPa*sqrt(m). Lives computed with it are therefore short by roughly that factor. The anchored value is reported alongside in domain_lives so both are on the record.",
+  "aerospace_life_ratio_anchored_over_specified": 5.696202531645569
+ },
+ "machine_learning": {
+  "target": "log10(N_f)",
+  "window_samples": 20,
+  "split_sizes": {
+   "train": 1050,
+   "val": 225,
+   "test": 225
+  },
+  "n_trajectories": {
+   "aerospace": 500,
+   "biomedical": 500,
+   "civil": 500
+  },
+  "inspection_noise_applied": true,
+  "test_scores": {
+   "ridge": {
+    "r2": 0.9998430766634925,
+    "rmse_decades": 0.033568890785973034,
+    "median_life_ratio_error": 0.05697818121151321,
+    "per_domain_r2": {
+     "aerospace": 0.9972977496625239,
+     "biomedical": 0.9991222191218921,
+     "civil": 0.9985067860709578
+    }
+   },
+   "paris_closed_form": {
+    "r2": 0.9998290382806153,
+    "rmse_decades": 0.03503827063842323,
+    "median_life_ratio_error": 0.017717872375429655,
+    "per_domain_r2": {
+     "aerospace": 0.9997652331803475,
+     "biomedical": 0.9999978467042239,
+     "civil": 0.9955410415990787
+    }
+   },
+   "xgboost_field": {
+    "r2": 0.9997587281206214,
+    "rmse_decades": 0.04162426501065203,
+    "median_life_ratio_error": 0.05006292745852292,
+    "per_domain_r2": {
+     "aerospace": 0.9974281156290431,
+     "biomedical": 0.9976124190574452,
+     "civil": 0.9983117172335935
+    }
+   },
+   "lstm": {
+    "r2": 0.9998927739756741,
+    "rmse_decades": 0.027748743739834915,
+    "median_life_ratio_error": 0.045794264713530985,
+    "per_domain_r2": {
+     "aerospace": 0.9988185656019085,
+     "biomedical": 0.9994310522630653,
+     "civil": 0.9985728545588307
+    }
+   }
+  },
+  "lstm_target_r2": 0.92,
+  "lstm_target_met": true,
+  "honesty_note": "Paris Law is a power law, so log10(N_f) is close to linear in the log features. Every model here clears the 0.92 R squared target, ridge included. The separation is in RMSE measured in decades of life, not in R squared, and that is how the paper should report it."
+ },
+ "pinn": {
+  "architecture": {
+   "depth": 8,
+   "width": 128,
+   "activation": "tanh",
+   "init": "xavier_normal",
+   "inputs": 10,
+   "n_parameters": 117250,
+   "enrichment": "4 Westergaard branch functions per tip",
+   "hard_constraint": "v = (y/H) * net_v, roller at y = 0 exact"
+  },
+  "epochs": 2000,
+  "wall_clock_s": 2233.0,
+  "seconds_per_epoch": 1.1165,
+  "device": "cpu",
+  "dtype": "float32",
+  "loss_names": [
+   "pde",
+   "traction_top",
+   "traction_side",
+   "crack_face",
+   "data"
+  ],
+  "final_losses": {
+   "pde": 0.004555298015475273,
+   "traction_top": 3.5563653000281192e-06,
+   "traction_side": 9.764191054273397e-05,
+   "crack_face": 0.008432088419795036,
+   "data": 0.000471508625196293
+  },
+  "final_weights": [
+   0.004229494836181402,
+   4.805248737335205,
+   0.127204030752182,
+   0.0009997209999710321,
+   0.062317632138729095
+  ],
+  "accuracy": {
+   "displacement_relative_L2_vs_xfem": 0.023718665749115294,
+   "K_I_xfem_interaction_integral": 27.74726259430214,
+   "K_I_analytical": 27.86834073801644,
+   "K_I_pinn_from_opening": 26.944094581493232,
+   "K_I_xfem_from_opening": 25.531482094869975,
+   "K_I_pinn_error_percent": -2.894584682288034,
+   "cod_fit_note": "same near tip opening fit applied to both fields, so the comparison isolates the network not the estimator"
+  },
+  "panel": {
+   "W": 0.1,
+   "H": 0.2,
+   "a": 0.02,
+   "sigma_MPa": 100.0,
+   "material": "Al2024-T3",
+   "E_GPa": 73.1,
+   "nu": 0.33
+  }
+ },
+ "part1_headline_numbers": {
+  "xfem_K_I_error_percent": [
+   -0.48157417855172946,
+   -0.43446484615886916,
+   -0.46532508081119967
+  ],
+  "epfm_J_error_percent": -1.5926578105299898,
+  "pure_mode_II_kink_angle_deg": -59.99999999999999,
+  "peridynamic_crack_advance_m": 2.025,
+  "peridynamic_pd_strength_MPa": 6.805186300432742,
+  "peridynamic_applied_MPa": 12.0
+ },
+ "figures": {
+  "chart_01_paris_rate_curves": {
+   "file": "python_stats/figures/chart_01_paris_rate_curves.png",
+   "caption": "Paris law da/dN for the three domain materials against the reference bands. The specified 2024-T3 coefficient sits a factor 5.7 above the commonly cited anchor, so the anchored curve is drawn as well."
+  },
+  "chart_02_crack_growth_curves": {
+   "file": "python_stats/figures/chart_02_crack_growth_curves.png",
+   "caption": "Crack length against cycle count for the three domain anchor cases under Paris, Walker and Forman growth laws."
+  },
+  "chart_03_geometry_factors": {
+   "file": "python_stats/figures/chart_03_geometry_factors.png",
+   "caption": "Handbook geometry correction factors and the stress intensity they produce at a fixed applied stress."
+  },
+  "chart_04_xfem_crack_path": {
+   "file": "python_stats/figures/chart_04_xfem_crack_path.png",
+   "caption": "XFEM crack path for an inclined centre crack. The path turns towards mode I within the first two steps, which is the maximum circumferential stress criterion doing its job, and K_II collapses accordingly."
+  },
+  "chart_05_peridynamic_damage": {
+   "file": "python_stats/figures/chart_05_peridynamic_damage.png",
+   "caption": "Bond based peridynamic damage field. The crack chooses its own path and branches without any predefined path. The driving ratio is the applied stress against the horizon implied strength, not the handbook tensile strength, and both numbers are on the figure."
+  },
+  "chart_06_jr_curves": {
+   "file": "python_stats/figures/chart_06_jr_curves.png",
+   "caption": "J-R resistance curves with applied J at three load levels. Where the applied curve becomes tangent to the resistance curve, tearing is unstable under load control."
+  },
+  "chart_07_ctod_vs_load": {
+   "file": "python_stats/figures/chart_07_ctod_vs_load.png",
+   "caption": "CTOD from the elastic plastic J against the elastic estimate. The gap opens once the applied stress passes roughly half of yield."
+  },
+  "chart_08_critical_crack_length": {
+   "file": "python_stats/figures/chart_08_critical_crack_length.png",
+   "caption": "Critical crack length against applied stress for the three domains, solved implicitly because the geometry factor itself depends on a."
+  },
+  "chart_09_ssy_validity": {
+   "file": "python_stats/figures/chart_09_ssy_validity.png",
+   "caption": "Where linear elastic fracture mechanics is allowed to speak. Above the white contour the plastic zone is more than two percent of the crack length and the elastic plastic treatment is required."
+  },
+  "chart_10_kink_angle": {
+   "file": "python_stats/figures/chart_10_kink_angle.png",
+   "caption": "Kink angle against mode mixity. The XFEM points for inclined cracks sit on the analytical criterion and the pure mode II asymptote is recovered to 0.03 degrees."
+  },
+  "chart_11_gait_loading": {
+   "file": "python_stats/figures/chart_11_gait_loading.png",
+   "caption": "Measured hip contact force through the gait cycle and the stress intensity it drives at a 0.1 mm interface microcrack. A stumble is about three times the walking peak and happens roughly once per thousand cycles."
+  },
+  "chart_12_corrosion_coupling": {
+   "file": "python_stats/figures/chart_12_corrosion_coupling.png",
+   "caption": "Chloride driven section loss and the fatigue life it removes. Section loss is converted to a stress rise on the remaining area, which is the simplest defensible coupling and is stated as such."
+  },
+  "chart_13_model_parity": {
+   "file": "python_stats/figures/chart_13_model_parity.png",
+   "caption": "Predicted against true fatigue life on the fixed test split. Every model clears the 0.92 target comfortably, which says the mapping is close to log linear, not that the models are remarkable."
+  },
+  "chart_14_shap_attribution": {
+   "file": "python_stats/figures/chart_14_shap_attribution.png",
+   "caption": "Mean absolute SHAP value per feature. The cycle count already elapsed inside the observation window dominates, which is the model finding the same thing the Paris integral says."
+  },
+  "chart_15_toughness_temperature": {
+   "file": "python_stats/figures/chart_15_toughness_temperature.png",
+   "caption": "Fracture toughness against temperature and the flaw size it tolerates. Aluminium is face centred cubic so there is no ductile to brittle transition, only a steady fall above about 400 K."
+  },
+  "chart_16_peridynamic_convergence": {
+   "file": "python_stats/figures/chart_16_peridynamic_convergence.png",
+   "caption": "Peridynamic m convergence. The damage profile converges as the grid is refined at a fixed horizon, and the discrete fracture energy approaches the continuum identity from below."
+  },
+  "chart_17_pinn_training": {
+   "file": "python_stats/figures/chart_17_pinn_training.png",
+   "caption": "PINN loss history, the adaptive weights that produced it, and the crack opening profile against XFEM. Wall clock is CPU only and is reported as measured."
+  }
+ },
+ "figure_count": 17
+}

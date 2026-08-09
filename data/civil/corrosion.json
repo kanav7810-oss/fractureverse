@@ -1,0 +1,30 @@
+{
+  "description": "Chloride induced rebar corrosion model inputs for bridge deck corrosion-fatigue coupling.",
+  "faraday_model": {
+    "form": "Corrosion penetration rate p in mm/year equals 0.0116 * i_corr in uA/cm^2 for iron.",
+    "constant_mm_per_year_per_uA_cm2": 0.0116,
+    "source": "Andrade and Alonso 1996, Construction and Building Materials. Standard Faraday conversion for steel in concrete."
+  },
+  "corrosion_levels": {
+    "none":   {"i_corr_uA_cm2": 0.0,  "label": "Passive, chloride below threshold"},
+    "mild":   {"i_corr_uA_cm2": 0.1,  "label": "Low active corrosion, inland de-icing salt exposure"},
+    "moderate":{"i_corr_uA_cm2": 0.5, "label": "Moderate active corrosion"},
+    "severe": {"i_corr_uA_cm2": 1.0,  "label": "High active corrosion, marine splash zone"}
+  },
+  "i_corr_reference_range_uA_cm2": [0.1, 1.0],
+  "i_corr_source": "FHWA corrosion of reinforcing steel field data, marine and de-icing exposure.",
+  "chloride_initiation": {
+    "threshold_percent_by_weight_cement": 0.4,
+    "typical_initiation_time_years": {"marine_splash": 8, "deicing_salt": 15, "benign": 40}
+  },
+  "pitting_factor": {
+    "value": 5.0,
+    "note": "Ratio of maximum pit depth to uniform corrosion depth for chloride induced pitting. Used to convert uniform loss into an equivalent surface crack starter."
+  },
+  "nbi_condition_rating_scale": {
+    "9": "Excellent", "8": "Very good", "7": "Good", "6": "Satisfactory",
+    "5": "Fair", "4": "Poor", "3": "Serious", "2": "Critical",
+    "1": "Imminent failure", "0": "Failed",
+    "structurally_deficient_rule": "Deck, superstructure, or substructure rating of 4 or less."
+  }
+}

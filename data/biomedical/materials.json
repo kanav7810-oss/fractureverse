@@ -1,0 +1,90 @@
+{
+  "domain": "biomedical",
+  "cycle_frequency_per_year": 1500000,
+  "cycle_frequency_note": "About 1.5 million gait cycles per year for an average total joint replacement patient.",
+  "inspection_interval_note": "Clinical follow up and revision decision window 10 to 15 years.",
+  "impact": {
+    "annual_hip_and_knee_replacements_us": 400000,
+    "revision_cost_usd_range": [15000, 50000],
+    "source": "American Academy of Orthopaedic Surgeons and NIH/NIAMS. Implant-bone interface fracture is the leading driver of revision surgery."
+  },
+  "patient_loading": {
+    "body_mass_kg": 75.0,
+    "body_weight_N": 735.75,
+    "hip_peak_load_multiplier_walking": 3.0,
+    "hip_peak_load_multiplier_stairs": 4.0,
+    "hip_peak_load_multiplier_stumble": 8.7,
+    "peak_hip_force_N_walking": 2207.0,
+    "peak_hip_force_N_stairs": 2943.0,
+    "source": "Bergmann et al. 2001, Journal of Biomechanics, instrumented hip implant telemetry. AAOS 3 to 4 times body weight during gait."
+  },
+  "materials": {
+    "CorticalBone_healthy": {
+      "name": "Cortical bone, healthy adult, longitudinal",
+      "E": 20.0e9,
+      "E_units": "Pa",
+      "nu": 0.30,
+      "rho": 1900.0,
+      "apparent_density_g_cm3": 1.85,
+      "sigma_Y": 115e6,
+      "sigma_UTS": 133e6,
+      "K_IC": 4.0,
+      "K_IC_units": "MPa*sqrt(m)",
+      "K_IC_range": [2.0, 5.0],
+      "paris_C": 1.3e-7,
+      "paris_m": 6.7,
+      "paris_units": "da/dN in m/cycle, delta_K in MPa*sqrt(m)",
+      "walker_gamma": 0.60,
+      "J_IC": 2000.0,
+      "J_IC_units": "J/m^2",
+      "JR_exponent_n": 0.42,
+      "JR_delta_a_ref": 0.0005,
+      "plane_strain": true,
+      "sources": [
+        "Reilly and Burstein 1975, Journal of Biomechanics, elastic and ultimate properties of compact bone",
+        "Yeni et al. 1997, Bone, fracture toughness of human femoral neck",
+        "Caler and Carter 1989, Journal of Biomechanics, bone creep-fatigue damage accumulation"
+      ],
+      "uncertainty": {
+        "paris_C_range": [6.0e-8, 3.0e-7],
+        "paris_m_range": [5.8, 7.6],
+        "E_range": [17.0e9, 25.0e9]
+      }
+    },
+    "CorticalBone_osteoporotic": {
+      "name": "Cortical bone, osteoporotic",
+      "E": 12.0e9,
+      "E_units": "Pa",
+      "nu": 0.30,
+      "rho": 1650.0,
+      "apparent_density_g_cm3": 1.42,
+      "sigma_Y": 78e6,
+      "sigma_UTS": 92e6,
+      "K_IC": 2.2,
+      "K_IC_units": "MPa*sqrt(m)",
+      "K_IC_range": [1.6, 3.0],
+      "paris_C": 4.0e-7,
+      "paris_m": 6.7,
+      "walker_gamma": 0.60,
+      "J_IC": 900.0,
+      "J_IC_units": "J/m^2",
+      "JR_exponent_n": 0.38,
+      "JR_delta_a_ref": 0.0005,
+      "plane_strain": true,
+      "sources": [
+        "Yeni et al. 1997, Bone",
+        "Zioupos and Currey 1998, Bone, age related changes in toughness"
+      ],
+      "uncertainty": {
+        "paris_C_range": [2.0e-7, 8.0e-7],
+        "paris_m_range": [6.0, 7.6],
+        "E_range": [9.0e9, 15.0e9]
+      }
+    }
+  },
+  "keller_1994_modulus_law": {
+    "form": "E_GPa = 10.5 * rho_apparent_g_cm3 ^ 2.29",
+    "rho_valid_range_g_cm3": [0.8, 2.0],
+    "source": "Keller 1994, Journal of Biomechanics, predicting the compressive mechanical behavior of bone"
+  }
+}

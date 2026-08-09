@@ -1,0 +1,91 @@
+{
+ "part": 2,
+ "checks": [
+  {
+   "name": "1. Trained weights and the fixed split are on disk",
+   "pass": true,
+   "detail": "9/9 present"
+  },
+  {
+   "name": "2. 500 trajectories per domain",
+   "pass": true,
+   "detail": "{'aerospace': 500, 'biomedical': 500, 'civil': 500}"
+  },
+  {
+   "name": "3. Split covers every trajectory exactly once",
+   "pass": true,
+   "detail": "1050/225/225, seed 1337"
+  },
+  {
+   "name": "4. Loaded weights reproduce the reported test scores to 1e-9",
+   "pass": true,
+   "detail": "lstm delta R2 0.00e+00, xgboost_field delta R2 0.00e+00"
+  },
+  {
+   "name": "5. LSTM test R squared above the 0.92 target",
+   "pass": true,
+   "detail": "R2 = 0.99989, RMSE = 0.0277 decades"
+  },
+  {
+   "name": "6. R squared and RMSE reported per domain for every model",
+   "pass": true,
+   "detail": "4 models, 3 domains each"
+  },
+  {
+   "name": "7. Paris coefficients and a_c are excluded from the feature set",
+   "pass": true,
+   "detail": [
+    "a0_over_ac",
+    "log_a_c",
+    "log_dadn_0",
+    "log_paris_C",
+    "paris_m"
+   ]
+  },
+  {
+   "name": "8. PINN has five physics losses and all are finite",
+   "pass": true,
+   "detail": "pde 4.56e-03, traction_top 3.56e-06, traction_side 9.76e-05, crack_face 8.43e-03, data 4.72e-04"
+  },
+  {
+   "name": "9. PINN is 8 layers, 128 neurons, tanh, Xavier",
+   "pass": true,
+   "detail": "117250 parameters, 10 inputs"
+  },
+  {
+   "name": "10. PINN displacement within 10 percent relative L2 of XFEM",
+   "pass": true,
+   "detail": "relative L2 = 2.37 percent, K_I from opening 26.94 against XFEM 25.53 MPa sqrt(m)"
+  },
+  {
+   "name": "11. PINN wall clock recorded, CPU only",
+   "pass": true,
+   "detail": "2233.0 s for 2000 epochs, 1.1165 s per epoch"
+  },
+  {
+   "name": "12. 17 figures written at 300 dpi",
+   "pass": true,
+   "detail": "17 PNG files"
+  },
+  {
+   "name": "13. Every figure carries a caption",
+   "pass": true,
+   "detail": "17 captions"
+  },
+  {
+   "name": "14. Both Paris coefficients reported, ratio stated",
+   "pass": true,
+   "detail": "anchored life is 5.70 times the specified life for 2024-T3"
+  },
+  {
+   "name": "15. No em dashes in Part 2 source or documents",
+   "pass": true,
+   "detail": "clean"
+  }
+ ],
+ "summary": {
+  "passed": 15,
+  "total": 15,
+  "seconds": 8.3
+ }
+}

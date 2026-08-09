@@ -1,0 +1,21 @@
+# FRACTUREVERSE Python dependencies, pinned to the versions Part 1 was validated on.
+# Python 3.11.15 on Windows 11, AMD Radeon 610M integrated GPU, so torch is the CPU build.
+
+# Part 1, physics and data foundation
+numpy==2.4.6
+scipy==1.17.1
+
+# Part 2, machine learning, PINN and the statistics engine
+matplotlib==3.11.0
+seaborn==0.13.2
+pandas==3.0.3
+scikit-learn==1.9.0
+torch==2.13.0+cpu
+xgboost==3.2.0
+shap==0.51.0
+
+# Part 4, backend and report export
+fastapi==0.139.0
+uvicorn==0.51.0
+pydantic==2.13.4
+reportlab==5.0.0

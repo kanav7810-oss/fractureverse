@@ -1,0 +1,72 @@
+{
+  "domain": "civil",
+  "cycle_frequency_per_year": 5000000,
+  "cycle_frequency_note": "About 5 million heavy truck axle crossings per year on a moderately trafficked interstate bridge deck.",
+  "inspection_interval_note": "FHWA National Bridge Inspection Standards require routine inspection at most every 24 months.",
+  "impact": {
+    "us_bridges_in_nbi": 617000,
+    "structurally_deficient_bridges": 42000,
+    "source": "FHWA National Bridge Inventory, https://www.fhwa.dot.gov/bridge/nbi.cfm and ASCE 2021 Infrastructure Report Card."
+  },
+  "materials": {
+    "Concrete_normal": {
+      "name": "Normal strength reinforced concrete deck, f_c 35 MPa",
+      "E": 30.0e9,
+      "E_units": "Pa",
+      "nu": 0.20,
+      "rho": 2400.0,
+      "f_c": 35e6,
+      "f_t": 4.0e6,
+      "sigma_Y": 4.0e6,
+      "G_f": 100.0,
+      "G_f_units": "J/m^2",
+      "G_f_range": [50.0, 150.0],
+      "K_IC": 1.732,
+      "K_IC_units": "MPa*sqrt(m)",
+      "K_IC_note": "Derived from K_IC = sqrt(E * G_f) with E = 30 GPa and G_f = 100 J/m^2.",
+      "paris_C": 3.0e-9,
+      "paris_m": 4.0,
+      "paris_units": "da/dN in m/cycle, delta_K in MPa*sqrt(m)",
+      "paris_note": "Representative fit. Literature scatter for concrete fatigue crack growth is very wide, reported m spans roughly 3 to 12.",
+      "walker_gamma": 0.35,
+      "J_IC": 110.0,
+      "J_IC_units": "J/m^2",
+      "JR_exponent_n": 0.25,
+      "JR_delta_a_ref": 0.005,
+      "plane_strain": true,
+      "sources": [
+        "Bazant and Pfeiffer 1987, ACI Materials Journal, determination of fracture energy from size effect",
+        "Bazant and Planas 1998, Fracture and Size Effect in Concrete and Other Quasibrittle Materials"
+      ],
+      "uncertainty": {
+        "paris_C_range": [1.0e-9, 9.0e-9],
+        "paris_m_range": [3.2, 5.0],
+        "E_range": [26.0e9, 34.0e9],
+        "G_f_range": [50.0, 150.0]
+      }
+    },
+    "Rebar_A615_Gr60": {
+      "name": "Deformed carbon steel reinforcing bar, ASTM A615 Grade 60",
+      "E": 200.0e9,
+      "E_units": "Pa",
+      "nu": 0.30,
+      "rho": 7850.0,
+      "sigma_Y": 420e6,
+      "sigma_UTS": 620e6,
+      "K_IC": 60.0,
+      "K_IC_units": "MPa*sqrt(m)",
+      "paris_C": 1.0e-11,
+      "paris_m": 3.0,
+      "walker_gamma": 0.50,
+      "J_IC": 45000.0,
+      "J_IC_units": "J/m^2",
+      "JR_exponent_n": 0.60,
+      "JR_delta_a_ref": 0.001,
+      "plane_strain": true,
+      "nominal_diameters_mm": [10, 13, 16, 19, 22, 25, 29, 32],
+      "sources": [
+        "BS 7910 and ASTM A615 property tables for ferritic steel in air"
+      ]
+    }
+  }
+}
