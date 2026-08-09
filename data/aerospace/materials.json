@@ -1,0 +1,81 @@
+{
+  "domain": "aerospace",
+  "cycle_frequency_per_year": 500,
+  "cycle_frequency_note": "One flight cycle per day, ground-air-ground cycle, 500 pressurization cycles per year for a short-haul commercial airframe.",
+  "inspection_interval_note": "FAA C-check nominal interval 6000 flight hours.",
+  "impact": {
+    "fatigue_share_of_structural_failures": 0.20,
+    "source": "FAA / NTSB airframe structural failure statistics, fatigue cracking is the dominant single cause at roughly 20 percent."
+  },
+  "materials": {
+    "Al2024-T3": {
+      "name": "Aluminum alloy 2024-T3 (fuselage skin)",
+      "E": 73.1e9,
+      "E_units": "Pa",
+      "nu": 0.33,
+      "rho": 2780.0,
+      "sigma_Y": 345e6,
+      "sigma_UTS": 483e6,
+      "K_IC": 36.0,
+      "K_IC_units": "MPa*sqrt(m)",
+      "K_IC_range": [33.0, 39.0],
+      "paris_C": 3.6e-10,
+      "paris_m": 3.5,
+      "paris_units": "da/dN in m/cycle, delta_K in MPa*sqrt(m)",
+      "paris_C_anchored": 6.32e-11,
+      "paris_C_note": "paris_C is the specified project value and sits at the conservative upper end of the reported scatter band. Evaluated at delta_K = 10 MPa*sqrt(m) it predicts 1.14e-6 m/cycle, about 5.7 times the commonly cited mid range value of 2.0e-7 m/cycle. paris_C_anchored reproduces that anchor exactly at the same slope m = 3.5. Predicted lives with paris_C are therefore conservative, meaning shorter, by roughly the same factor. Switch with materials.use_anchored_paris().",
+      "walker_gamma": 0.5,
+      "J_IC": 25000.0,
+      "J_IC_units": "J/m^2",
+      "JR_exponent_n": 0.55,
+      "JR_delta_a_ref": 0.001,
+      "plane_strain": false,
+      "sources": [
+        "NASA/TM-2002-211428, fatigue crack growth data for aluminum alloys",
+        "NASGRO material database, https://www.nasgro.swri.org/",
+        "MIL-HDBK-5J / MMPDS static properties"
+      ],
+      "uncertainty": {
+        "paris_C_range": [2.5e-10, 5.2e-10],
+        "paris_m_range": [3.2, 3.8],
+        "E_range": [70.0e9, 75.0e9]
+      }
+    },
+    "Al7075-T6": {
+      "name": "Aluminum alloy 7075-T6 (wing spar, stringer)",
+      "E": 71.7e9,
+      "E_units": "Pa",
+      "nu": 0.33,
+      "rho": 2810.0,
+      "sigma_Y": 503e6,
+      "sigma_UTS": 572e6,
+      "K_IC": 29.0,
+      "K_IC_units": "MPa*sqrt(m)",
+      "K_IC_range": [26.0, 32.0],
+      "paris_C": 5.0e-11,
+      "paris_m": 4.0,
+      "paris_units": "da/dN in m/cycle, delta_K in MPa*sqrt(m)",
+      "paris_C_anchored": 2.50e-11,
+      "walker_gamma": 0.42,
+      "J_IC": 16000.0,
+      "J_IC_units": "J/m^2",
+      "JR_exponent_n": 0.50,
+      "JR_delta_a_ref": 0.001,
+      "plane_strain": true,
+      "sources": [
+        "NASA/TM-2002-211428",
+        "NASGRO material database"
+      ],
+      "uncertainty": {
+        "paris_C_range": [3.0e-11, 9.0e-11],
+        "paris_m_range": [3.6, 4.4],
+        "E_range": [69.0e9, 74.0e9]
+      }
+    }
+  },
+  "K_IC_temperature_curve": {
+    "note": "K_IC vs temperature for 2024-T3. Aluminum is FCC so it has no sharp ductile to brittle transition, but toughness rises at cryogenic temperature and falls above about 400 K. Values are representative literature trend data.",
+    "temperature_K": [77, 150, 200, 250, 293, 350, 400, 450, 500],
+    "K_IC_MPa_sqrt_m": [42.0, 40.0, 38.5, 37.2, 36.0, 34.4, 32.6, 29.8, 26.0]
+  }
+}
