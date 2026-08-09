@@ -1,0 +1,75 @@
+{
+  "part": 4,
+  "title": "FRACTUREVERSE Part 4 backend and end to end acceptance",
+  "checks": [
+    {
+      "name": "1. Every Part 4 endpoint is mounted",
+      "pass": true,
+      "detail": "8 routes, plus the static mount"
+    },
+    {
+      "name": "2. /api/capabilities equals capabilities() and the Part 3 fixture",
+      "pass": true,
+      "detail": "one source of truth for every selector in the app"
+    },
+    {
+      "name": "3. /api/solve is the solver, not a copy of it",
+      "pass": true,
+      "detail": "max relative error 0.0e+00 over K_I, a_c and N_f, N_f 2671.5100 cycles"
+    },
+    {
+      "name": "4. Out of range refused, slow theories refused unless asked for",
+      "pass": true,
+      "detail": "a/W 0.9 gives 422, peridynamic gives 413, xfem with allow_slow gives 200"
+    },
+    {
+      "name": "5. /api/predict runs one sample through the trained LSTM",
+      "pass": true,
+      "detail": "aerospace life ratio error 0.021, biomedical life ratio error 0.024, civil life ratio error 0.099"
+    },
+    {
+      "name": "6. sweep.json is offline only, ml.json is served",
+      "pass": true,
+      "detail": "live mode never loads the 1.9 MB grid, the playground calls /api/solve"
+    },
+    {
+      "name": "7. The paper is exported and downloadable",
+      "pass": true,
+      "detail": "pdf 4688 kB, markdown 12803 characters"
+    },
+    {
+      "name": "8. No em dashes in py, md, ts, tsx, css or html",
+      "pass": true,
+      "detail": "research/paper.md scanned with everything else"
+    },
+    {
+      "name": "9. Vertical scroll is never hijacked",
+      "pass": true,
+      "detail": "no wheel listener and no programmatic scrolling in src"
+    },
+    {
+      "name": "10. Live and offline are both explicit in the UI",
+      "pass": true,
+      "detail": "mode is probed once, shown as a badge, and the grid is not fetched live"
+    },
+    {
+      "name": "11. Nine Playwright suites with at least 30 tests",
+      "pass": true,
+      "detail": "9 spec files, 50 tests"
+    },
+    {
+      "name": "12. Production build clean and every browser test passing",
+      "pass": true,
+      "detail": "build clean, 50 passed (43.9s)"
+    },
+    {
+      "name": "13. Parts 1, 2 and 3 still fully green",
+      "pass": true,
+      "detail": "{'part1': (14, 14), 'part2': (15, 15), 'part3': (13, 13)}"
+    }
+  ],
+  "summary": {
+    "passed": 13,
+    "total": 13
+  }
+}
