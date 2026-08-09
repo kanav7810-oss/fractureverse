@@ -1,0 +1,75 @@
+{
+  "part": 3,
+  "title": "FRACTUREVERSE Part 3 frontend acceptance",
+  "checks": [
+    {
+      "name": "1. React TypeScript app with Three.js and Framer Motion",
+      "pass": true,
+      "detail": "react ^19.2.8, typescript ~6.0.2, three ^0.185.1, @react-three/fiber ^9.7.0, framer-motion ^13.0.0"
+    },
+    {
+      "name": "2. Every fixture present and valid JSON",
+      "pass": true,
+      "detail": "11 files"
+    },
+    {
+      "name": "3. capabilities.json equals capabilities()",
+      "pass": true,
+      "detail": "selectors are generated, not hardcoded"
+    },
+    {
+      "name": "4. Sweep record reproduces a live solve",
+      "pass": true,
+      "detail": "max relative error 2.86e-06 over K_I, a_c and N_f, six significant digits stored"
+    },
+    {
+      "name": "5. stats_summary.json copied unchanged",
+      "pass": true,
+      "detail": "no number retyped in the frontend"
+    },
+    {
+      "name": "6. No em dashes in py, md, ts, tsx, css or html",
+      "pass": true,
+      "detail": "6 extensions scanned"
+    },
+    {
+      "name": "7. Vertical scroll is never hijacked",
+      "pass": true,
+      "detail": "no wheel listener, no programmatic scrolling"
+    },
+    {
+      "name": "8. 50,000 cells in one instanced mesh with a 30 x 30 x 10 fallback",
+      "pass": true,
+      "detail": "fallback triggers when frame time passes 50 ms"
+    },
+    {
+      "name": "9. No sweep record outside the geometry validity range",
+      "pass": true,
+      "detail": "invalid combinations are absent, not extrapolated"
+    },
+    {
+      "name": "10. Figure gallery matches python_stats output",
+      "pass": true,
+      "detail": "17 captions, 17 PNG files"
+    },
+    {
+      "name": "11. All four honesty findings surfaced in the UI",
+      "pass": true,
+      "detail": "{'6.1 anchored Paris': True, '6.2 horizon strength': True, '6.3 log linear task': True, '6.4 opening at the centre': True}"
+    },
+    {
+      "name": "12. Part 1 and Part 2 checks still green",
+      "pass": true,
+      "detail": "{'part1': (14, 14), 'part2': (15, 15)}"
+    },
+    {
+      "name": "13. tsc and vite build clean",
+      "pass": true,
+      "detail": "dist/index.html written"
+    }
+  ],
+  "summary": {
+    "passed": 13,
+    "total": 13
+  }
+}
