@@ -1,0 +1,447 @@
+{
+ "target": "log10(N_f)",
+ "window": 20,
+ "split_sizes": {
+  "train": 1050,
+  "val": 225,
+  "test": 225
+ },
+ "models": {
+  "ridge": {
+   "train": {
+    "n": 1050,
+    "r2": 0.9998488142723321,
+    "rmse": 0.03262864840996069,
+    "mae": 0.026833001560113614,
+    "median_life_ratio_error": 0.055508968851487595,
+    "per_domain": {
+     "aerospace": {
+      "n": 350,
+      "r2": 0.9969109412134846,
+      "rmse": 0.03242141978680769,
+      "mae": 0.025264611696680747,
+      "median_life_ratio_error": 0.04379590202246425
+     },
+     "biomedical": {
+      "n": 350,
+      "r2": 0.9993043555789771,
+      "rmse": 0.03169268215938442,
+      "mae": 0.02744835378158251,
+      "median_life_ratio_error": 0.05969348492559279
+     },
+     "civil": {
+      "n": 350,
+      "r2": 0.9989523189283825,
+      "rmse": 0.03373887265061359,
+      "mae": 0.027786039202077586,
+      "median_life_ratio_error": 0.057916218027598165
+     }
+    }
+   },
+   "val": {
+    "n": 225,
+    "r2": 0.9998281123177929,
+    "rmse": 0.03444902262890787,
+    "mae": 0.028880718892936582,
+    "median_life_ratio_error": 0.06214668076040941,
+    "per_domain": {
+     "aerospace": {
+      "n": 75,
+      "r2": 0.9963791349091373,
+      "rmse": 0.03796324947711818,
+      "mae": 0.030785304111713572,
+      "median_life_ratio_error": 0.05922352723229718
+     },
+     "biomedical": {
+      "n": 75,
+      "r2": 0.9993749294074955,
+      "rmse": 0.03158856159413301,
+      "mae": 0.028251458444735356,
+      "median_life_ratio_error": 0.0707486767502481
+     },
+     "civil": {
+      "n": 75,
+      "r2": 0.9992402333862979,
+      "rmse": 0.033483726581919934,
+      "mae": 0.027605394122360814,
+      "median_life_ratio_error": 0.055599333759551284
+     }
+    }
+   },
+   "test": {
+    "n": 225,
+    "r2": 0.9998430766634925,
+    "rmse": 0.033568890785973034,
+    "mae": 0.027883356189089964,
+    "median_life_ratio_error": 0.05697818121151321,
+    "per_domain": {
+     "aerospace": {
+      "n": 75,
+      "r2": 0.9972977496625239,
+      "rmse": 0.03440689735246046,
+      "mae": 0.027023600129477802,
+      "median_life_ratio_error": 0.045557701374856485
+     },
+     "biomedical": {
+      "n": 75,
+      "r2": 0.9991222191218921,
+      "rmse": 0.031601647849432375,
+      "mae": 0.027577230370906425,
+      "median_life_ratio_error": 0.057081683583313336
+     },
+     "civil": {
+      "n": 75,
+      "r2": 0.9985067860709578,
+      "rmse": 0.034613762488054825,
+      "mae": 0.029049238066885662,
+      "median_life_ratio_error": 0.05901449863518815
+     }
+    }
+   },
+   "notes": "field feature set, no Paris coefficients"
+  },
+  "paris_closed_form": {
+   "train": {
+    "n": 1050,
+    "r2": 0.9998165880821027,
+    "rmse": 0.03593829448296405,
+    "mae": 0.02102832994776652,
+    "median_life_ratio_error": 0.01694926723856538,
+    "per_domain": {
+     "aerospace": {
+      "n": 350,
+      "r2": 0.999689446415983,
+      "rmse": 0.0102798603671304,
+      "mae": 0.008860121123934086,
+      "median_life_ratio_error": 0.01694926723856538
+     },
+     "biomedical": {
+      "n": 350,
+      "r2": 0.9999981907571658,
+      "rmse": 0.0016162694811950797,
+      "mae": 0.0011182698590890743,
+      "median_life_ratio_error": 0.0014698611819595198
+     },
+     "civil": {
+      "n": 350,
+      "r2": 0.996533478896806,
+      "rmse": 0.06137096361333422,
+      "mae": 0.053106598860276404,
+      "median_life_ratio_error": 0.112196794759309
+     }
+    }
+   },
+   "val": {
+    "n": 225,
+    "r2": 0.9998209461103144,
+    "rmse": 0.03515980089291259,
+    "mae": 0.020595066902153007,
+    "median_life_ratio_error": 0.016200424698176175,
+    "per_domain": {
+     "aerospace": {
+      "n": 75,
+      "r2": 0.9997548962294706,
+      "rmse": 0.009877162596701938,
+      "mae": 0.008324646910227222,
+      "median_life_ratio_error": 0.016200424698176175
+     },
+     "biomedical": {
+      "n": 75,
+      "r2": 0.9999984832240176,
+      "rmse": 0.0015560589233233138,
+      "mae": 0.0011142183040255826,
+      "median_life_ratio_error": 0.001591408825041829
+     },
+     "civil": {
+      "n": 75,
+      "r2": 0.9975545543675068,
+      "rmse": 0.060072082835150885,
+      "mae": 0.052346335492206214,
+      "median_life_ratio_error": 0.1280153547306151
+     }
+    }
+   },
+   "test": {
+    "n": 225,
+    "r2": 0.9998290382806153,
+    "rmse": 0.03503827063842323,
+    "mae": 0.02112593811248898,
+    "median_life_ratio_error": 0.017717872375429655,
+    "per_domain": {
+     "aerospace": {
+      "n": 75,
+      "r2": 0.9997652331803475,
+      "rmse": 0.010141473969555918,
+      "mae": 0.008936827619556003,
+      "median_life_ratio_error": 0.017717872375429655
+     },
+     "biomedical": {
+      "n": 75,
+      "r2": 0.9999978467042239,
+      "rmse": 0.0015651952296138678,
+      "mae": 0.0011075196649362724,
+      "median_life_ratio_error": 0.0013264785332340878
+     },
+     "civil": {
+      "n": 75,
+      "r2": 0.9955410415990787,
+      "rmse": 0.059814228220484364,
+      "mae": 0.05333346705297467,
+      "median_life_ratio_error": 0.1205916697647329
+     }
+    }
+   }
+  },
+  "xgboost_field": {
+   "train": {
+    "n": 1050,
+    "r2": 0.9999925192050694,
+    "rmse": 0.007258009992268307,
+    "mae": 0.0057188622284185175,
+    "median_life_ratio_error": 0.010738167027112722,
+    "per_domain": {
+     "aerospace": {
+      "n": 350,
+      "r2": 0.9998476220134885,
+      "rmse": 0.007200788549182512,
+      "mae": 0.0057012489640722,
+      "median_life_ratio_error": 0.010719075359231889
+     },
+     "biomedical": {
+      "n": 350,
+      "r2": 0.9999629474693652,
+      "rmse": 0.007314325435596523,
+      "mae": 0.005642616695382137,
+      "median_life_ratio_error": 0.01027973939247967
+     },
+     "civil": {
+      "n": 350,
+      "r2": 0.9999515093095969,
+      "rmse": 0.00725847193531445,
+      "mae": 0.005812721025801216,
+      "median_life_ratio_error": 0.011403885687712223
+     }
+    }
+   },
+   "val": {
+    "n": 225,
+    "r2": 0.9992933657194687,
+    "rmse": 0.06984766274306933,
+    "mae": 0.03908395225291265,
+    "median_life_ratio_error": 0.050329673545651765,
+    "per_domain": {
+     "aerospace": {
+      "n": 75,
+      "r2": 0.9954725359065776,
+      "rmse": 0.04245068615196325,
+      "mae": 0.031062869417856315,
+      "median_life_ratio_error": 0.05035156268059282
+     },
+     "biomedical": {
+      "n": 75,
+      "r2": 0.9973898094196222,
+      "rmse": 0.06455076980826398,
+      "mae": 0.04017301415523086,
+      "median_life_ratio_error": 0.04920947698065903
+     },
+     "civil": {
+      "n": 75,
+      "r2": 0.9941265575290111,
+      "rmse": 0.0930979341038065,
+      "mae": 0.04601597318565075,
+      "median_life_ratio_error": 0.05422939754264944
+     }
+    }
+   },
+   "test": {
+    "n": 225,
+    "r2": 0.9997587281206214,
+    "rmse": 0.04162426501065203,
+    "mae": 0.029977208835707925,
+    "median_life_ratio_error": 0.05006292745852292,
+    "per_domain": {
+     "aerospace": {
+      "n": 75,
+      "r2": 0.9974281156290431,
+      "rmse": 0.03356668411491146,
+      "mae": 0.025084631491302536,
+      "median_life_ratio_error": 0.03978118639602335
+     },
+     "biomedical": {
+      "n": 75,
+      "r2": 0.9976124190574452,
+      "rmse": 0.052118957858190595,
+      "mae": 0.03610021999474024,
+      "median_life_ratio_error": 0.06479719518163796
+     },
+     "civil": {
+      "n": 75,
+      "r2": 0.9983117172335935,
+      "rmse": 0.03680530209544373,
+      "mae": 0.028746775021080993,
+      "median_life_ratio_error": 0.05241527277394087
+     }
+    }
+   },
+   "wall_clock_s": 10.17,
+   "params": {
+    "n_estimators": 600,
+    "max_depth": 5,
+    "learning_rate": 0.05,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "reg_lambda": 1.0,
+    "random_state": 1337,
+    "n_jobs": 4,
+    "tree_method": "hist",
+    "best_iteration": 374
+   }
+  },
+  "lstm": {
+   "train": {
+    "n": 1050,
+    "r2": 0.9999067654633612,
+    "rmse": 0.025623125003604308,
+    "mae": 0.020603033268092007,
+    "median_life_ratio_error": 0.04061504454467424,
+    "per_domain": {
+     "aerospace": {
+      "n": 350,
+      "r2": 0.9987461384568087,
+      "rmse": 0.020655881526754596,
+      "mae": 0.015675856142955417,
+      "median_life_ratio_error": 0.028871503131012055
+     },
+     "biomedical": {
+      "n": 350,
+      "r2": 0.9995468246004312,
+      "rmse": 0.025579880136999338,
+      "mae": 0.021197435600678338,
+      "median_life_ratio_error": 0.0435959907446678
+     },
+     "civil": {
+      "n": 350,
+      "r2": 0.9991821139645619,
+      "rmse": 0.02981003011371209,
+      "mae": 0.024935808060642273,
+      "median_life_ratio_error": 0.05265822456563907
+     }
+    }
+   },
+   "val": {
+    "n": 225,
+    "r2": 0.9998125243813912,
+    "rmse": 0.03597716390598353,
+    "mae": 0.023652499201682817,
+    "median_life_ratio_error": 0.04150859450043076,
+    "per_domain": {
+     "aerospace": {
+      "n": 75,
+      "r2": 0.9987888625075744,
+      "rmse": 0.02195603585245081,
+      "mae": 0.016326181021744716,
+      "median_life_ratio_error": 0.025610624361173562
+     },
+     "biomedical": {
+      "n": 75,
+      "r2": 0.9995794756650007,
+      "rmse": 0.025909610435643316,
+      "mae": 0.021889367463759135,
+      "median_life_ratio_error": 0.04381710147546458
+     },
+     "civil": {
+      "n": 75,
+      "r2": 0.9981501925494408,
+      "rmse": 0.052246469209632815,
+      "mae": 0.03274194911954459,
+      "median_life_ratio_error": 0.054985887936025435
+     }
+    }
+   },
+   "test": {
+    "n": 225,
+    "r2": 0.9998927739756741,
+    "rmse": 0.027748743739834915,
+    "mae": 0.022690504202232824,
+    "median_life_ratio_error": 0.045794264713530985,
+    "per_domain": {
+     "aerospace": {
+      "n": 75,
+      "r2": 0.9988185656019085,
+      "rmse": 0.022750320939677833,
+      "mae": 0.017774289872200685,
+      "median_life_ratio_error": 0.031347339820017806
+     },
+     "biomedical": {
+      "n": 75,
+      "r2": 0.9994310522630653,
+      "rmse": 0.025442094330332288,
+      "mae": 0.021795045726048002,
+      "median_life_ratio_error": 0.050918955067497995
+     },
+     "civil": {
+      "n": 75,
+      "r2": 0.9985728545588307,
+      "rmse": 0.03383934205396452,
+      "mae": 0.028502177008449793,
+      "median_life_ratio_error": 0.05921155509716103
+     }
+    }
+   },
+   "wall_clock_s": 353.9,
+   "params": {
+    "hidden": 64,
+    "layers": 2,
+    "epochs": 400,
+    "batch": 64,
+    "lr": 0.003,
+    "n_parameters": 58497
+   }
+  }
+ },
+ "seed": 1337,
+ "n_trajectories": {
+  "aerospace": 500,
+  "biomedical": 500,
+  "civil": 500
+ },
+ "feature_sets": {
+  "field": [
+   "log_a0",
+   "log_sigma_max",
+   "R",
+   "log_W",
+   "log_E",
+   "K_IC",
+   "log_sigma_Y",
+   "nu",
+   "geometry",
+   "domain",
+   "log_dK0",
+   "K_ratio_0"
+  ],
+  "leaky_dropped": [
+   "log_paris_C",
+   "paris_m",
+   "log_a_c",
+   "a0_over_ac",
+   "log_dadn_0"
+  ]
+ },
+ "inspection_noise": true,
+ "artifacts": [
+  "lstm.pt",
+  "lstm_history.json",
+  "ml_report.json",
+  "scalers.json",
+  "shap_summary.json",
+  "split.json",
+  "trajectories_aerospace.npz",
+  "trajectories_biomedical.npz",
+  "trajectories_civil.npz",
+  "trajectories_meta.json",
+  "xgb_field.json"
+ ],
+ "wall_clock_s": 381.2,
+ "honesty_note": "Paris Law is a power law, so log10(N_f) is close to linear in the log features. Every model here clears the 0.92 R squared target, ridge included. The separation is in RMSE measured in decades of life, not in R squared, and that is how the paper should report it."
+}
