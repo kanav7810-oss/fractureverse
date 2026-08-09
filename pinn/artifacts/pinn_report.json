@@ -1,0 +1,57 @@
+{
+ "epochs": 2000,
+ "wall_clock_s": 2233.0,
+ "seconds_per_epoch": 1.1165,
+ "dtype": "float32",
+ "device": "cpu",
+ "threads": 4,
+ "architecture": {
+  "depth": 8,
+  "width": 128,
+  "activation": "tanh",
+  "init": "xavier_normal",
+  "inputs": 10,
+  "n_parameters": 117250,
+  "enrichment": "4 Westergaard branch functions per tip",
+  "hard_constraint": "v = (y/H) * net_v, roller at y = 0 exact"
+ },
+ "loss_names": [
+  "pde",
+  "traction_top",
+  "traction_side",
+  "crack_face",
+  "data"
+ ],
+ "final_losses": {
+  "pde": 0.004555298015475273,
+  "traction_top": 3.5563653000281192e-06,
+  "traction_side": 9.764191054273397e-05,
+  "crack_face": 0.008432088419795036,
+  "data": 0.000471508625196293
+ },
+ "final_weights": [
+  0.004229494836181402,
+  4.805248737335205,
+  0.127204030752182,
+  0.0009997209999710321,
+  0.062317632138729095
+ ],
+ "panel": {
+  "W": 0.1,
+  "H": 0.2,
+  "a": 0.02,
+  "sigma_MPa": 100.0,
+  "material": "Al2024-T3",
+  "E_GPa": 73.1,
+  "nu": 0.33
+ },
+ "accuracy": {
+  "displacement_relative_L2_vs_xfem": 0.023718665749115294,
+  "K_I_xfem_interaction_integral": 27.74726259430214,
+  "K_I_analytical": 27.86834073801644,
+  "K_I_pinn_from_opening": 26.944094581493232,
+  "K_I_xfem_from_opening": 25.531482094869975,
+  "K_I_pinn_error_percent": -2.894584682288034,
+  "cod_fit_note": "same near tip opening fit applied to both fields, so the comparison isolates the network not the estimator"
+ }
+}
