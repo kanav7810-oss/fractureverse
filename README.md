@@ -1,5 +1,14 @@
 # FRACTUREVERSE
 
+**Live: [fractureverse.vercel.app](https://fractureverse.vercel.app)**
+Source: [github.com/kanav7810-oss/fractureverse](https://github.com/kanav7810-oss/fractureverse)
+
+The hosted build is the frontend only. It runs against the precomputed fixtures in
+`app/public/data`, which are generated from the solver and the trained models, and it says so
+in the sidebar and on the playground rather than pretending to be live. Torch, XGBoost and
+SHAP do not fit in a serverless function, so the FastAPI service in `api/` runs locally. Start
+it and the same build switches to live solves with no rebuild.
+
 A multi physics fracture propagation digital twin for structural failure prediction across
 aerospace aluminium alloys, orthopaedic bone implants and reinforced concrete bridge decks.
 Four fracture theories, three engineering domains, one platform.

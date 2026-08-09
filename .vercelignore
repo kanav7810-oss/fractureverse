@@ -1,0 +1,20 @@
+# Vercel builds the frontend only. There is no Python runtime on the deployment, which
+# is why the hosted app runs in offline mode against the precomputed fixtures in
+# app/public/data and says so in the sidebar. The solver, the models and the FastAPI
+# service run locally, see the README.
+#
+# Every pattern is anchored with a leading slash. Without it, data/ would also match
+# app/public/data and the hosted app would have no fixtures to read.
+/requirements.txt
+/*.py
+/api
+/ml
+/physics
+/pinn
+/python_stats
+/research
+/data
+/HANDOFF.md
+/HANDOFF_part1.md
+/HANDOFF_part2.md
+/HANDOFF_part3.md

@@ -372,7 +372,7 @@ export default function App() {
       <aside className="sidebar">
         <div className="brand">
           FRACTUREVERSE
-          <small>Part 4, live backend. Physics from Parts 1 and 2.</small>
+          <small>Four theories, three domains, one validated stack.</small>
           <small data-testid="app-mode">
             {dataMode === undefined
               ? "checking for the solver service"

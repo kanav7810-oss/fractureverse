@@ -306,6 +306,21 @@ Part 4 check 13 reads the three earlier reports rather than rerunning them. Part
 their check lists inside `app/public/data/validation.json`, Part 3 writes
 `research/part3_validation.json` in its own shape.
 
+## 8b. Where it is published
+
+| What | Where |
+|---|---|
+| Source | https://github.com/kanav7810-oss/fractureverse |
+| Hosted frontend | https://fractureverse.vercel.app |
+
+The Vercel build is the frontend only. `vercel.json` runs `npm run build --prefix app` and
+serves `app/dist`, and `.vercelignore` keeps the Python tree out of the deployment, with every
+pattern anchored by a leading slash. Without the anchor, `data/` also matches
+`app/public/data` and the hosted app ships with no fixtures, which is exactly what the first
+successful deploy did. Torch, XGBoost and SHAP do not fit in a serverless function, so the
+hosted build runs in offline mode and names that state in the sidebar. Start uvicorn locally
+and the same bundle switches to live solves with no rebuild.
+
 ## 9. Open items, honestly stated
 
 None of these block anything. They are what a fifth part would pick up.

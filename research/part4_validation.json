@@ -60,7 +60,7 @@
     {
       "name": "12. Production build clean and every browser test passing",
       "pass": true,
-      "detail": "build clean, 50 passed (48.0s)"
+      "detail": "build clean, 50 passed (43.9s)"
     },
     {
       "name": "13. Parts 1, 2 and 3 still fully green",
