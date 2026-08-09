@@ -1,0 +1,14 @@
+# Build output and dependencies. Everything else in this repository is real data.
+node_modules/
+app/dist/
+app/test-results/
+app/playwright-report/
+app/shots/
+.vercel/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+.vercel
