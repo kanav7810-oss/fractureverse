@@ -75,7 +75,8 @@ def sweep(caps):
     records = []
     curves = {}
     for domain, key, mat in material_index(caps):
-        for geometry in ["infinite", "center", "edge", "compact", "through", "surface"]:
+        for geometry in ["infinite", "center", "ccp", "edge", "sent", "dent",
+                           "compact", "ct", "through", "surface", "tpb", "brazilian"]:
             for sigma in SIGMA_MPA:
                 for a0_mm in A0_MM:
                     crack = CrackConfig(a0=a0_mm * 1e-3, geometry=geometry, W=0.1)
