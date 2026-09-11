@@ -1,6 +1,30 @@
 // Explicit validation blocks. Numbers match the spec, plain text, sup tags only.
 import { Stat } from "./ui";
 
+export function PinnValidation() {
+  return (
+    <div className="panel" style={{ marginTop: 14 }}>
+      <h3>Validation</h3>
+      <p className="muted" style={{ fontSize: 13 }}>
+        Benchmark case: PINN against XFEM on the same panel.
+        Geometry: center cracked panel.
+        Inputs: PINN opening fit and interaction integral on XFEM field.
+        Output: K_I from PINN 26.9 MPa sqrt(m), interaction integral 27.7 MPa sqrt(m).
+        Reference: interaction integral. PINN error 2.89 percent.
+        Field: displacement relative L2 error 2.37 percent.
+        Note: centre opening 13 percent low because Westergaard enrichment carries
+        least information at crack centre.
+      </p>
+      <div className="grid cols4">
+        <Stat k="K_I PINN" v="26.9" u="MPa sqrt(m)" />
+        <Stat k="K_I integral" v="27.7" u="MPa sqrt(m)" />
+        <Stat k="PINN error" v="2.89" u="percent" />
+        <Stat k="Field L2" v="2.37" u="percent" />
+      </div>
+    </div>
+  );
+}
+
 export function XfemValidation() {
   return (
     <div className="panel" style={{ marginTop: 14 }}>
