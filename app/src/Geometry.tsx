@@ -15,7 +15,10 @@ export const GEOMETRY_META: Record<GeometryKey, { title: string; desc: string }>
     title: "Center cracked panel (CCP)",
     desc: "Center crack of half length a under remote tension. Width W, height H.",
   },
-  tpb: { title: "Three point bend (TPB)", desc: "Placeholder" },
+  tpb: {
+    title: "Three point bend (TPB)",
+    desc: "Edge cracked beam in bending. Span S, width W, crack length a, load P at midspan.",
+  },
   brazilian: { title: "Brazilian disk", desc: "Placeholder" },
   ct: { title: "Compact tension (CT)", desc: "Placeholder" },
 };
