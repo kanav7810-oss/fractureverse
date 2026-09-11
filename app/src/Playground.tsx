@@ -228,6 +228,14 @@ function PlaygroundBody({ caps, live }: { caps: Capabilities; live: boolean }) {
         </p>
       )}
 
+      <h2>Supported geometry configurations</h2>
+      <p className="muted" style={{ fontSize: 13 }}>
+        SENT uses the edge solution, DENT uses the symmetric edge solution, CCP uses the
+        center solution, CT uses the compact solution, TPB uses the bend solution, and
+        Brazilian uses the disk solution. All share the same material database and loading
+        inputs for cross-method comparison.
+      </p>
+
       <h2>Which Paris coefficient produced that life</h2>
       <Note title="Finding 6.1, carried from Part 1">
         The specified coefficient for 2024-T3 predicts about 5.7 times the commonly cited growth rate
