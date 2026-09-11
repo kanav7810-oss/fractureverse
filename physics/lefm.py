@@ -59,6 +59,14 @@ def F_edge(a: float, W: float) -> float:
     return 1.12 - 0.231 * x + 10.55 * x ** 2 - 21.72 * x ** 3 + 30.39 * x ** 4
 
 
+def F_dent(a: float, W: float) -> float:
+    """Double edge notch tension. Symmetric edge cracks, Benthem and Koiter form."""
+    x = a / W
+    if not 0.0 < x < 0.45:
+        raise ValueError(f"dent needs 0 < a/W < 0.45, got {x:.4f}")
+    return 1.12 + 0.43 * x - 4.79 * x ** 2 + 15.46 * x ** 3
+
+
 def F_compact(a: float, W: float) -> float:
     """Compact tension, ASTM E399.
 
