@@ -1,4 +1,5 @@
 // Features 6 and 7. XFEM crack path and the peridynamic damage map.
+// Geometry strips and validation blocks appended additively, existing charts untouched.
 import { useEffect, useRef } from "react";
 import {
   CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis,
