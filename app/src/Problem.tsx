@@ -67,6 +67,22 @@ export function Problem() {
         <BrazilianDiagram />
       </div>
 
+      <h2>Model evidence, computed not drawn</h2>
+      <p className="muted">
+        Every PNG below is computed from the solver or the Part 1 run on disk.
+        Nothing here is a hand drawing.
+      </p>
+      <div className="hscroll">
+        <div className="figcard">
+          <img src={`${import.meta.env.BASE_URL}problem/problem_geometries_ki.png`} alt="K_I against a over W for all six geometries at 100 MPa" loading="lazy" />
+          <div className="cap"><strong>K_I curves</strong><br />SENT, DENT, CCP, CT, TPB, Brazilian at 100 MPa, W 0.1 m, one solver.</div>
+        </div>
+        <div className="figcard">
+          <img src={`${import.meta.env.BASE_URL}problem/problem_branching.png`} alt="Peridynamic damage field from the concrete branching run" loading="lazy" />
+          <div className="cap"><strong>Branching run</strong><br />Damage field from research/part1_peridynamic_damage.npy.</div>
+        </div>
+      </div>
+
       <h2>Section 4: What Was Validated</h2>
       <div className="tablewrap panel">
         <table>
