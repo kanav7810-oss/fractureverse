@@ -244,7 +244,9 @@ def critical_crack_length(sigma_max_pa: float, K_IC: float, W: float = 1.0,
     if sigma_max_pa <= 0.0:
         raise ValueError("sigma_max must be positive")
 
-    upper = {"center": 0.499, "through": 0.499, "edge": 0.699, "compact": 0.799}.get(geometry, 0.95)
+    upper = {"center": 0.499, "ccp": 0.499, "through": 0.499, "edge": 0.699,
+             "sent": 0.699, "dent": 0.449, "compact": 0.799, "ct": 0.799,
+             "tpb": 0.699, "brazilian": 0.399}.get(geometry, 0.95)
     a_hi = upper * W * 0.999
 
     def residual(a: float) -> float:
