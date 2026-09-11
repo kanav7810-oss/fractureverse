@@ -1,4 +1,12 @@
 // Problem statement page. Five sections in order. Palette only, no new styles.
+import {
+  BrazilianDiagram,
+  CcpDiagram,
+  CtDiagram,
+  DentDiagram,
+  SentDiagram,
+  TpbDiagram,
+} from "./Geometry";
 import { Section } from "./ui";
 
 export function Problem() {
