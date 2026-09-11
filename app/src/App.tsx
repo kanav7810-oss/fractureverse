@@ -10,7 +10,7 @@ import { Leaderboard, Parity, PinnView, ShapView } from "./Models";
 import { PeridynamicView, XfemView } from "./Physics";
 import { Playground } from "./Playground";
 import { Problem } from "./Problem";
-import { Loading, Note, Section, Stat, useFixture, useMode } from "./ui";
+import { Loading, Note, Section, Stat, useFixture, useMode, Zoom } from "./ui";
 import { LstmValidation, PeridynamicsValidation, PinnValidation, XfemValidation } from "./ValidationBlocks";
 import { Viewer3D } from "./Viewer3D";
 
@@ -217,29 +217,24 @@ function Theories({ caps }: { caps: Capabilities }) {
 
 function Figures() {
   const figs = useFixture<Record<string, string>>("figures.json");
-  const [zoom, setZoom] = useState<string | null>(null);
   if (!figs.data) return <Loading what="the figure captions" />;
   const names = Object.keys(figs.data).sort();
   return (
     <Section
       title="Figure gallery"
-      lede="The 17 publication figures, served as the 300 dpi PNG that python_stats already produced. Nothing here is replotted in JavaScript, because a static chart gains nothing from being redrawn in the browser."
+      lede="The 17 publication figures, served as the 300 dpi PNG that python_stats already produced. Nothing here is replotted in JavaScript, because a static chart gains nothing from being redrawn in the browser. Click any figure to enlarge it."
     >
       <div className="hscroll">
         {names.map((n) => (
           <div key={n} className="figcard">
-            <img src={`${import.meta.env.BASE_URL}figures/${n}.png`} alt={figs.data![n]}
-              loading="lazy" onClick={() => setZoom(n)} />
+            <Zoom label={n.replace(/_/g, " ")}>
+              <img src={`${import.meta.env.BASE_URL}figures/${n}.png`} alt={figs.data![n]}
+                loading="lazy" />
+            </Zoom>
             <div className="cap"><strong>{n.replace(/_/g, " ")}</strong><br />{figs.data![n]}</div>
           </div>
         ))}
       </div>
-      {zoom && (
-        <motion.div className="lightbox" onClick={() => setZoom(null)}
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.15 }}>
-          <img src={`${import.meta.env.BASE_URL}figures/${zoom}.png`} alt={figs.data[zoom]} />
-        </motion.div>
-      )}
     </Section>
   );
 }
