@@ -36,6 +36,35 @@ export function Problem() {
           propagation path, and fatigue life prediction.
         </p>
       </div>
+
+      <h2>Section 3: Geometry Diagrams</h2>
+      <p className="muted">
+        One labeled schematic per method. Panel, crack, loading arrows, and key dimensions.
+      </p>
+      <h3>Peridynamics</h3>
+      <div className="hscroll">
+        <SentDiagram />
+        <DentDiagram />
+        <CcpDiagram />
+      </div>
+      <h3>XFEM</h3>
+      <div className="hscroll">
+        <TpbDiagram />
+        <BrazilianDiagram />
+        <CtDiagram />
+      </div>
+      <h3>Cohesive zone</h3>
+      <div className="hscroll">
+        <SentDiagram />
+        <CcpDiagram />
+        <CtDiagram />
+      </div>
+      <h3>Phase-field</h3>
+      <div className="hscroll">
+        <DentDiagram />
+        <TpbDiagram />
+        <BrazilianDiagram />
+      </div>
     </Section>
   );
 }
