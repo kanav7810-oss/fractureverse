@@ -120,6 +120,31 @@ export function CtDiagram() {
   );
 }
 
+export function GeometryStrip({ keys }: { keys: GeometryKey[] }) {
+  const map: Record<GeometryKey, React.ReactNode> = {
+    sent: <SentDiagram />,
+    dent: <DentDiagram />,
+    ccp: <CcpDiagram />,
+    tpb: <TpbDiagram />,
+    brazilian: <BrazilianDiagram />,
+    ct: <CtDiagram />,
+  };
+  return (
+    <div className="hscroll">
+      {keys.map((k) => (
+        <div key={k}>{map[k]}</div>
+      ))}
+    </div>
+  );
+}
+
+export const METHOD_GEOMETRIES: Record<string, GeometryKey[]> = {
+  peridynamics: ["sent", "dent", "ccp", "tpb", "brazilian", "ct"],
+  xfem: ["sent", "dent", "ccp", "tpb", "brazilian", "ct"],
+  cohesive: ["sent", "dent", "ccp", "tpb", "brazilian", "ct"],
+  phasefield: ["sent", "dent", "ccp", "tpb", "brazilian", "ct"],
+};
+
 export function SentDiagram() {
   return (
     <Frame label="SENT">
