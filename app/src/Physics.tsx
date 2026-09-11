@@ -5,7 +5,9 @@ import {
 } from "recharts";
 import type { PeridynamicFixture, XfemFixture } from "./data";
 import { fmt } from "./data";
+import { GeometryStrip } from "./Geometry";
 import { CHART_AXIS, CHART_GRID, Loading, Note, Section, Stat, useFixture } from "./ui";
+import { PeridynamicsValidation, XfemValidation } from "./ValidationBlocks";
 
 export function XfemView() {
   const x = useFixture<XfemFixture>("xfem.json");
