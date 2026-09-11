@@ -1,5 +1,6 @@
 // Geometry library. Six cases, one style, palette only.
 // No new colors, no new fonts, SVG line diagrams only.
+// Strokes use jade for panels, ember for cracks, indigo for loads, muted for labels.
 export type GeometryKey = "sent" | "dent" | "ccp" | "tpb" | "brazilian" | "ct";
 
 export const GEOMETRY_META: Record<GeometryKey, { title: string; desc: string }> = {
