@@ -83,6 +83,18 @@ export function Problem() {
         </div>
       </div>
 
+      <h2>Validation graphs</h2>
+      <div className="hscroll">
+        <div className="figcard">
+          <img src={`${import.meta.env.BASE_URL}problem/problem_validation_ki.png`} alt="Measured K_I against reference, XFEM and PINN" loading="lazy" />
+          <div className="cap"><strong>K_I bars</strong><br />XFEM fit 25.5 vs closed form 27.9, PINN 26.9 vs integral 27.7 MPa sqrt(m).</div>
+        </div>
+        <div className="figcard">
+          <img src={`${import.meta.env.BASE_URL}problem/problem_lstm_rmse.png`} alt="LSTM RMSE by domain over 225 test samples" loading="lazy" />
+          <div className="cap"><strong>LSTM error</strong><br />Aerospace 0.0228, biomedical 0.0254, civil 0.0338 decades.</div>
+        </div>
+      </div>
+
       <h2>Section 4: What Was Validated</h2>
       <div className="tablewrap panel">
         <table>
