@@ -8,7 +8,7 @@ import {
   SentDiagram,
   TpbDiagram,
 } from "./Geometry";
-import { Section } from "./ui";
+import { Section, Zoom } from "./ui";
 
 export function Problem() {
   return (
@@ -74,11 +74,15 @@ export function Problem() {
       </p>
       <div className="hscroll">
         <div className="figcard">
-          <img src={`${import.meta.env.BASE_URL}problem/problem_geometries_ki.png`} alt="K_I against a over W for all six geometries at 100 MPa" loading="lazy" />
+          <Zoom label="K_I curves">
+            <img src={`${import.meta.env.BASE_URL}problem/problem_geometries_ki.png`} alt="K_I against a over W for all six geometries at 100 MPa" loading="lazy" />
+          </Zoom>
           <div className="cap"><strong>K_I curves</strong><br />SENT, DENT, CCP, CT, TPB, Brazilian at 100 MPa, W 0.1 m, one solver.</div>
         </div>
         <div className="figcard">
-          <img src={`${import.meta.env.BASE_URL}problem/problem_branching.png`} alt="Peridynamic damage field from the concrete branching run" loading="lazy" />
+          <Zoom label="Branching run">
+            <img src={`${import.meta.env.BASE_URL}problem/problem_branching.png`} alt="Peridynamic damage field from the concrete branching run" loading="lazy" />
+          </Zoom>
           <div className="cap"><strong>Branching run</strong><br />Damage field from research/part1_peridynamic_damage.npy.</div>
         </div>
       </div>
@@ -86,11 +90,15 @@ export function Problem() {
       <h2>Validation graphs</h2>
       <div className="hscroll">
         <div className="figcard">
-          <img src={`${import.meta.env.BASE_URL}problem/problem_validation_ki.png`} alt="Measured K_I against reference, XFEM and PINN" loading="lazy" />
+          <Zoom label="K_I bars">
+            <img src={`${import.meta.env.BASE_URL}problem/problem_validation_ki.png`} alt="Measured K_I against reference, XFEM and PINN" loading="lazy" />
+          </Zoom>
           <div className="cap"><strong>K_I bars</strong><br />XFEM fit 25.5 vs closed form 27.9, PINN 26.9 vs integral 27.7 MPa sqrt(m).</div>
         </div>
         <div className="figcard">
-          <img src={`${import.meta.env.BASE_URL}problem/problem_lstm_rmse.png`} alt="LSTM RMSE by domain over 225 test samples" loading="lazy" />
+          <Zoom label="LSTM error">
+            <img src={`${import.meta.env.BASE_URL}problem/problem_lstm_rmse.png`} alt="LSTM RMSE by domain over 225 test samples" loading="lazy" />
+          </Zoom>
           <div className="cap"><strong>LSTM error</strong><br />Aerospace 0.0228, biomedical 0.0254, civil 0.0338 decades.</div>
         </div>
       </div>
@@ -140,19 +148,27 @@ export function Problem() {
       </p>
       <div className="hscroll">
         <div className="figcard">
-          <img src={`${import.meta.env.BASE_URL}figures/chart_03_geometry_factors.png`} alt="Handbook geometry factor comparison" loading="lazy" />
+          <Zoom label="Geometry factors">
+            <img src={`${import.meta.env.BASE_URL}figures/chart_03_geometry_factors.png`} alt="Handbook geometry factor comparison" loading="lazy" />
+          </Zoom>
           <div className="cap"><strong>Geometry factors</strong><br />Solver factors against handbook targets.</div>
         </div>
         <div className="figcard">
-          <img src={`${import.meta.env.BASE_URL}figures/chart_05_peridynamic_damage.png`} alt="Peridynamic damage publication figure" loading="lazy" />
+          <Zoom label="Peridynamic damage">
+            <img src={`${import.meta.env.BASE_URL}figures/chart_05_peridynamic_damage.png`} alt="Peridynamic damage publication figure" loading="lazy" />
+          </Zoom>
           <div className="cap"><strong>Peridynamic damage</strong><br />Branching run as published.</div>
         </div>
         <div className="figcard">
-          <img src={`${import.meta.env.BASE_URL}figures/chart_04_xfem_crack_path.png`} alt="XFEM crack path publication figure" loading="lazy" />
+          <Zoom label="XFEM path">
+            <img src={`${import.meta.env.BASE_URL}figures/chart_04_xfem_crack_path.png`} alt="XFEM crack path publication figure" loading="lazy" />
+          </Zoom>
           <div className="cap"><strong>XFEM path</strong><br />Mixed mode propagation as published.</div>
         </div>
         <div className="figcard">
-          <img src={`${import.meta.env.BASE_URL}figures/chart_13_model_parity.png`} alt="Model parity publication figure" loading="lazy" />
+          <Zoom label="Parity">
+            <img src={`${import.meta.env.BASE_URL}figures/chart_13_model_parity.png`} alt="Model parity publication figure" loading="lazy" />
+          </Zoom>
           <div className="cap"><strong>Parity</strong><br />Held out predictions against true life.</div>
         </div>
       </div>
