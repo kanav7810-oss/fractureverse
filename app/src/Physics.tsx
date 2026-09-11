@@ -66,6 +66,10 @@ export function XfemView() {
         </div>
       </div>
 
+      <h2>Geometry configurations</h2>
+      <GeometryStrip keys={["sent", "dent", "ccp", "tpb", "brazilian", "ct"]} />
+      <XfemValidation />
+
       <h2>Single step solve, one per domain</h2>
       <div className="hscroll">
         {domains.map((d) => {
