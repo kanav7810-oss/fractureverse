@@ -29,10 +29,16 @@ Geometry = Literal["center", "edge", "compact", "through", "surface", "infinite"
 GEOMETRY_LABELS = {
     "infinite": "Infinite plate, F = 1",
     "center": "Center cracked tension panel, Feddersen secant",
+    "ccp": "Center cracked panel, same as center",
     "edge": "Single edge notched tension, Tada polynomial",
+    "sent": "Single edge notch tension, same as edge",
+    "dent": "Double edge notch tension, Benthem and Koiter",
     "compact": "Compact tension specimen, ASTM E399",
+    "ct": "Compact tension, same as compact",
     "through": "Through thickness crack in a finite width plate",
     "surface": "Semi elliptical surface crack, Newman and Raju",
+    "tpb": "Three point bend, ASTM E399 bend form",
+    "brazilian": "Brazilian disk, Atkinson center crack",
 }
 
 
