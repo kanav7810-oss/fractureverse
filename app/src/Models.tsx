@@ -1,4 +1,5 @@
 // Features 8 to 11. Model leaderboard, SHAP attribution, parity explorer, PINN against XFEM.
+// Validation blocks appended additively, existing charts untouched.
 import { useState } from "react";
 import {
   Bar, BarChart, CartesianGrid, Cell, Legend, Line, LineChart, ResponsiveContainer, Scatter,
