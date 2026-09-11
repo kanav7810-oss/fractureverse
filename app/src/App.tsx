@@ -244,6 +244,7 @@ function Figures() {
 
 const FEATURES = [
   { id: "overview", label: "Overview", render: (c: Capabilities) => <Overview caps={c} /> },
+  { id: "problem", label: "Problem", render: () => <Problem /> },
   { id: "theories", label: "Theory explorer", render: (c: Capabilities) => <Theories caps={c} /> },
   { id: "playground", label: "Solver playground", render: (c: Capabilities) => <Playground caps={c} /> },
   { id: "viewer", label: "Crack viewer 3D", render: () => <Viewer3D /> },
