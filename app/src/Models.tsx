@@ -263,6 +263,7 @@ export function PinnView() {
           </LineChart>
         </ResponsiveContainer>
       </div>
+      <PinnValidation />
       <Note title="Finding 6.4">
         The opening is about 13 percent low at the crack centre while the whole displacement field is
         within 2.4 percent. Near tip behaviour is good, which is why the PINN K_I lands within 2.9
