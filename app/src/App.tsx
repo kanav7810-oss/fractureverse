@@ -3,10 +3,13 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import type { Capabilities } from "./data";
 import { fmt } from "./data";
+import { GeometryStrip } from "./Geometry";
 import { Leaderboard, Parity, PinnView, ShapView } from "./Models";
 import { PeridynamicView, XfemView } from "./Physics";
 import { Playground } from "./Playground";
+import { Problem } from "./Problem";
 import { Loading, Note, Section, Stat, useFixture, useMode } from "./ui";
+import { LstmValidation, PeridynamicsValidation, PinnValidation, XfemValidation } from "./ValidationBlocks";
 import { Viewer3D } from "./Viewer3D";
 
 function Overview({ caps }: { caps: Capabilities }) {
