@@ -24,7 +24,8 @@ from scipy.optimize import brentq
 
 from .materials import Material
 
-Geometry = Literal["center", "edge", "compact", "through", "surface", "infinite"]
+Geometry = Literal["center", "ccp", "edge", "sent", "dent", "compact", "ct",
+                    "through", "surface", "infinite", "tpb", "brazilian"]
 
 GEOMETRY_LABELS = {
     "infinite": "Infinite plate, F = 1",
