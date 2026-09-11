@@ -11,7 +11,10 @@ export const GEOMETRY_META: Record<GeometryKey, { title: string; desc: string }>
     title: "Double edge notch tension (DENT)",
     desc: "Two symmetric edge cracks under remote tension. Crack length a each side, width W, height H.",
   },
-  ccp: { title: "Center cracked panel (CCP)", desc: "Placeholder" },
+  ccp: {
+    title: "Center cracked panel (CCP)",
+    desc: "Center crack of half length a under remote tension. Width W, height H.",
+  },
   tpb: { title: "Three point bend (TPB)", desc: "Placeholder" },
   brazilian: { title: "Brazilian disk", desc: "Placeholder" },
   ct: { title: "Compact tension (CT)", desc: "Placeholder" },
