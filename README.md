@@ -31,6 +31,14 @@ the paper exports to PDF, 13 of 13 Part 4 checks passing.
 | XFEM | Enriched finite elements, cracks cut through the mesh | Arbitrary crack paths, mixed mode kinking, stress fields for the PINN |
 | Peridynamics | Bonds between material points break on their own | Quasi brittle concrete, crack nucleation and branching with no predefined path |
 
+## Problem statement
+
+See Problem in the app nav. One shared material database feeds peridynamics, XFEM,
+cohesive zone modeling, and phase-field fracture on identical geometry and loading.
+Six geometry cases per method: SENT, DENT, CCP, TPB, Brazilian disk, and CT, each with
+a labeled SVG schematic. Validation blocks sit on each method page with benchmark case,
+inputs, output value, reference, and error.
+
 ## The three domains
 
 | Domain | Material | Duty cycle | Real world anchor |
