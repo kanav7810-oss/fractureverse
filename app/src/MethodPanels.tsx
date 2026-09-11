@@ -1,4 +1,5 @@
 // Cohesive zone and phase-field panels. Same selectors, same palette, no new styles.
+// Text uses plain hyphens only. No em dashes in this file by project rule.
 import { GeometryStrip } from "./Geometry";
 import { Section } from "./ui";
 
