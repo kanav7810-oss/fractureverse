@@ -1,6 +1,7 @@
 // Geometry library. Six cases, one style, palette only.
 // No new colors, no new fonts, SVG line diagrams only.
 // Strokes use jade for panels, ember for cracks, indigo for loads, muted for labels.
+import { Zoom } from "./ui";
 export type GeometryKey = "sent" | "dent" | "ccp" | "tpb" | "brazilian" | "ct";
 
 export const GEOMETRY_META: Record<GeometryKey, { title: string; desc: string }> = {
@@ -34,9 +35,11 @@ function Frame({ children, label }: { children: React.ReactNode; label: string }
   return (
     <div className="panel" style={{ width: 300 }}>
       <h3>{label}</h3>
-      <svg viewBox="0 0 200 140" width="100%" height="140" role="img" aria-label={label}>
-        {children}
-      </svg>
+      <Zoom label={`${label} schematic`}>
+        <svg viewBox="0 0 200 140" width="100%" height="140" role="img" aria-label={label}>
+          {children}
+        </svg>
+      </Zoom>
     </div>
   );
 }
