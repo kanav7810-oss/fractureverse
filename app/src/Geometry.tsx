@@ -19,7 +19,10 @@ export const GEOMETRY_META: Record<GeometryKey, { title: string; desc: string }>
     title: "Three point bend (TPB)",
     desc: "Edge cracked beam in bending. Span S, width W, crack length a, load P at midspan.",
   },
-  brazilian: { title: "Brazilian disk", desc: "Placeholder" },
+  brazilian: {
+    title: "Brazilian disk",
+    desc: "Cracked disk under diametral compression. Diameter D, crack half length a, load P.",
+  },
   ct: { title: "Compact tension (CT)", desc: "Placeholder" },
 };
 
