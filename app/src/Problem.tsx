@@ -134,6 +134,29 @@ export function Problem() {
         PINN centre opening 13 percent low, enrichment carries least information at centre.
       </p>
 
+      <h2>Publication figures behind this page</h2>
+      <p className="muted">
+        The same 300 dpi PNGs the figure gallery serves, shown where they argue the point.
+      </p>
+      <div className="hscroll">
+        <div className="figcard">
+          <img src={`${import.meta.env.BASE_URL}figures/chart_03_geometry_factors.png`} alt="Handbook geometry factor comparison" loading="lazy" />
+          <div className="cap"><strong>Geometry factors</strong><br />Solver factors against handbook targets.</div>
+        </div>
+        <div className="figcard">
+          <img src={`${import.meta.env.BASE_URL}figures/chart_05_peridynamic_damage.png`} alt="Peridynamic damage publication figure" loading="lazy" />
+          <div className="cap"><strong>Peridynamic damage</strong><br />Branching run as published.</div>
+        </div>
+        <div className="figcard">
+          <img src={`${import.meta.env.BASE_URL}figures/chart_04_xfem_crack_path.png`} alt="XFEM crack path publication figure" loading="lazy" />
+          <div className="cap"><strong>XFEM path</strong><br />Mixed mode propagation as published.</div>
+        </div>
+        <div className="figcard">
+          <img src={`${import.meta.env.BASE_URL}figures/chart_13_model_parity.png`} alt="Model parity publication figure" loading="lazy" />
+          <div className="cap"><strong>Parity</strong><br />Held out predictions against true life.</div>
+        </div>
+      </div>
+
       <h2>Section 5: Who This Is For</h2>
       <div className="panel">
         <p>
