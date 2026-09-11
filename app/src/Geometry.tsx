@@ -105,6 +105,21 @@ export function BrazilianDiagram() {
   );
 }
 
+export function CtDiagram() {
+  return (
+    <Frame label="CT">
+      <rect x="55" y="20" width="90" height="100" fill="none" stroke="#7fd1c0" strokeWidth="2" />
+      <line x1="55" y1="70" x2="95" y2="70" stroke="#e8b04b" strokeWidth="3" />
+      <text x="70" y="65" fill="#8f8d87" fontSize="9">a</text>
+      <text x="90" y="125" fill="#8f8d87" fontSize="9">W</text>
+      <circle cx="80" cy="45" r="5" fill="none" stroke="#9aa4ff" strokeWidth="1" />
+      <circle cx="80" cy="95" r="5" fill="none" stroke="#9aa4ff" strokeWidth="1" />
+      <text x="88" y="48" fill="#9aa4ff" fontSize="9">P</text>
+      <text x="88" y="98" fill="#9aa4ff" fontSize="9">P</text>
+    </Frame>
+  );
+}
+
 export function SentDiagram() {
   return (
     <Frame label="SENT">
