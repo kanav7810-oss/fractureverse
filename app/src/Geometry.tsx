@@ -87,6 +87,21 @@ export function TpbDiagram() {
   );
 }
 
+export function BrazilianDiagram() {
+  return (
+    <Frame label="Brazilian">
+      <circle cx="100" cy="70" r="50" fill="none" stroke="#7fd1c0" strokeWidth="2" />
+      <line x1="80" y1="70" x2="120" y2="70" stroke="#e8b04b" strokeWidth="3" />
+      <text x="96" y="65" fill="#8f8d87" fontSize="9">2a</text>
+      <text x="130" y="110" fill="#8f8d87" fontSize="9">D</text>
+      <line x1="100" y1="5" x2="100" y2="20" stroke="#9aa4ff" strokeWidth="2" />
+      <text x="104" y="14" fill="#9aa4ff" fontSize="9">P</text>
+      <line x1="100" y1="120" x2="100" y2="135" stroke="#9aa4ff" strokeWidth="2" />
+      <text x="104" y="133" fill="#9aa4ff" fontSize="9">P</text>
+    </Frame>
+  );
+}
+
 export function SentDiagram() {
   return (
     <Frame label="SENT">
