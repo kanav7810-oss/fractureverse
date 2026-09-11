@@ -169,7 +169,10 @@ export function Zoom({ label, children, wide }: {
     <>
       <div
         className="zoomthumb"
-        onClick={() => setOpen(true)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setOpen(true);
+        }}
         title={`Click to enlarge: ${label}`}
         role="button"
         tabIndex={0}

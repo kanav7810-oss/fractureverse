@@ -506,6 +506,8 @@ th.check, td.check { white-space: normal; width: 260px; }
   display: flex; align-items: center; justify-content: center;
   z-index: 60; padding: 4vh 4vw;
   backdrop-filter: blur(3px);
+  overscroll-behavior: contain;
+  touch-action: pan-y;
 }
 .zoomcard {
   width: min(880px, 92vw);
@@ -541,8 +543,17 @@ th.check, td.check { white-space: normal; width: 260px; }
 .zoomx:hover { border-color: var(--jade); }
 .zoomx:focus-visible { outline: 2px solid var(--jade); outline-offset: 2px; }
 .zoombody { padding: 18px; }
-.zoombody img { width: 100%; border-radius: 10px; display: block; }
-.zoombody svg { width: 100%; height: auto; }
+.zoombody img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 68vh;
+  margin: 0 auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
+.zoombody svg { width: 100%; height: auto; display: block; }
+.zoombody .recharts-responsive-container { margin: 0 auto; }
 
 /* --------------------------------------------------------------------- misc */
 .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--muted); align-items: center; }
