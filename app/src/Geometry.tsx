@@ -68,6 +68,22 @@ export function CcpDiagram() {
   );
 }
 
+export function TpbDiagram() {
+  return (
+    <Frame label="TPB">
+      <rect x="40" y="60" width="120" height="40" fill="none" stroke="#7fd1c0" strokeWidth="2" />
+      <line x1="100" y1="100" x2="100" y2="75" stroke="#e8b04b" strokeWidth="3" />
+      <text x="104" y="90" fill="#8f8d87" fontSize="9">a</text>
+      <text x="95" y="115" fill="#8f8d87" fontSize="9">W</text>
+      <text x="90" y="125" fill="#8f8d87" fontSize="9">S</text>
+      <circle cx="50" cy="105" r="4" fill="none" stroke="#9aa4ff" strokeWidth="1" />
+      <circle cx="150" cy="105" r="4" fill="none" stroke="#9aa4ff" strokeWidth="1" />
+      <line x1="100" y1="45" x2="100" y2="60" stroke="#9aa4ff" strokeWidth="2" />
+      <text x="104" y="52" fill="#9aa4ff" fontSize="9">P</text>
+    </Frame>
+  );
+}
+
 export function SentDiagram() {
   return (
     <Frame label="SENT">
