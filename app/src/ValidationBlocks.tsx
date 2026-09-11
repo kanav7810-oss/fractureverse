@@ -1,4 +1,5 @@
-// Explicit validation blocks. Numbers match the spec, plain text, sup tags only.
+// Explicit validation blocks. Numbers match the spec, plain text, no LaTeX.
+// Units use plain text such as MPa sqrt(m) to match existing app convention.
 import { Stat } from "./ui";
 
 export function LstmValidation() {
