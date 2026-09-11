@@ -7,7 +7,7 @@ import {
 } from "recharts";
 import type { MlFixture, PinnFixture } from "./data";
 import { fmt, fromLogLife } from "./data";
-import { CHART_AXIS, CHART_GRID, DOMAIN_COLOR, Loading, Note, Section, Stat, useFixture } from "./ui";
+import { CHART_AXIS, CHART_GRID, DOMAIN_COLOR, Loading, Note, Section, Stat, useFixture, Zoom } from "./ui";
 import { LstmValidation, PinnValidation } from "./ValidationBlocks";
 
 const MODEL_LABEL: Record<string, string> = {
@@ -96,6 +96,7 @@ export function Leaderboard() {
 
       <h2>LSTM training history</h2>
       <div className="panel">
+        <Zoom label="LSTM training history" wide>
         <ResponsiveContainer width="100%" height={240}>
           <LineChart data={ml.data.lstm_history.epoch.map((e, i) => ({
             epoch: e,
@@ -113,6 +114,7 @@ export function Leaderboard() {
             <Line dataKey="val_rmse" stroke="#c96a3f" dot={false} isAnimationActive={false} />
           </LineChart>
         </ResponsiveContainer>
+        </Zoom>
       </div>
     </Section>
   );
@@ -132,6 +134,7 @@ export function ShapView() {
       lede="Mean absolute SHAP value per feature for the XGBoost model on the field feature set. The leaky features are absent by construction, which is asserted by validate_part2.py check 7."
     >
       <div className="panel">
+        <Zoom label="Feature attribution" wide>
         <ResponsiveContainer width="100%" height={Math.max(260, data.length * 26)}>
           <BarChart data={data} layout="vertical" margin={{ top: 8, right: 24, bottom: 8, left: 110 }}>
             <CartesianGrid stroke={CHART_GRID} />
@@ -143,6 +146,7 @@ export function ShapView() {
             <Bar dataKey="value" fill="#9aa4ff" isAnimationActive={false} />
           </BarChart>
         </ResponsiveContainer>
+        </Zoom>
       </div>
       <p className="muted">
         Base value {fmt(base_value, 4)} decades, which is the mean predicted log10 life over the
@@ -182,6 +186,7 @@ export function Parity() {
             ))}
           </select>
         </label>
+        <Zoom label="Held out parity explorer" wide>
         <ResponsiveContainer width="100%" height={420}>
           <ScatterChart margin={{ top: 12, right: 18, bottom: 16, left: 4 }}>
             <CartesianGrid stroke={CHART_GRID} />
@@ -200,8 +205,9 @@ export function Parity() {
                 <Cell key={i} fill={DOMAIN_COLOR[p.domain] ?? "#8f8d87"} fillOpacity={0.75} />
               ))}
             </Scatter>
-          </ScatterChart>
+            </ScatterChart>
         </ResponsiveContainer>
+        </Zoom>
         <div className="legend">
           {Object.entries(DOMAIN_COLOR).map(([d, c]) => (
             <span key={d}><i className="swatch" style={{ background: c }} />{d}</span>
@@ -249,6 +255,7 @@ export function PinnView() {
 
       <h2>Crack opening profile, the panel that must not be cropped</h2>
       <div className="panel">
+        <Zoom label="Crack opening profile" wide>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={cod} margin={{ top: 8, right: 18, bottom: 14, left: 6 }}>
             <CartesianGrid stroke={CHART_GRID} />
@@ -263,6 +270,7 @@ export function PinnView() {
             <Line dataKey="pinn" stroke="#9aa4ff" dot={false} strokeWidth={2} isAnimationActive={false} />
           </LineChart>
         </ResponsiveContainer>
+        </Zoom>
       </div>
       <PinnValidation />
       <Note title="Finding 6.4">
@@ -275,6 +283,7 @@ export function PinnView() {
 
       <h2>Five loss terms with NTK style weighting</h2>
       <div className="panel">
+        <Zoom label="PINN loss terms" wide>
         <ResponsiveContainer width="100%" height={280}>
           <LineChart data={hist} margin={{ top: 8, right: 18, bottom: 14, left: 6 }}>
             <CartesianGrid stroke={CHART_GRID} />
@@ -289,6 +298,7 @@ export function PinnView() {
             ))}
           </LineChart>
         </ResponsiveContainer>
+        </Zoom>
       </div>
       <p className="muted">
         torch CPU is not bitwise portable across builds. These numbers are read from
