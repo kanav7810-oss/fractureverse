@@ -13,7 +13,7 @@ import {
 } from "recharts";
 import type { Capabilities, Curves, PredictResult, SolveResult, Sweep, SweepRecord } from "./data";
 import { apiPredict, apiSolve, fmt } from "./data";
-import { CHART_AXIS, CHART_GRID, Loading, Note, Section, Select, Slider, Stat, useFixture, useMode } from "./ui";
+import { CHART_AXIS, CHART_GRID, Loading, Note, Section, Select, Slider, Stat, useFixture, useMode, Zoom } from "./ui";
 
 // The grid axes. Identical in both modes so the two paths are comparable.
 const SIGMAS = [40, 60, 80, 100, 125, 150, 180, 220, 260];
@@ -206,6 +206,7 @@ function PlaygroundBody({ caps, live }: { caps: Capabilities; live: boolean }) {
       <h2>Crack growth history</h2>
       {curveData.length ? (
         <div className="panel" data-testid="growth-chart">
+          <Zoom label="Crack growth history" wide>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={curveData} margin={{ top: 8, right: 18, bottom: 8, left: 4 }}>
               <CartesianGrid stroke={CHART_GRID} />
@@ -219,6 +220,7 @@ function PlaygroundBody({ caps, live }: { caps: Capabilities; live: boolean }) {
               <Line type="monotone" dataKey="a" stroke="#9aa4ff" dot={false} strokeWidth={2} isAnimationActive={false} />
             </LineChart>
           </ResponsiveContainer>
+          </Zoom>
         </div>
       ) : (
         <p className="muted">
