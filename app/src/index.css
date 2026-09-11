@@ -497,6 +497,53 @@ th.check, td.check { white-space: normal; width: 260px; }
 }
 .lightbox img { max-width: 95vw; max-height: 88vh; background: #fff; border-radius: 8px; }
 
+/* Click to zoom. Overlay dims the page, card fills most of the screen. */
+.zoomthumb { cursor: zoom-in; }
+.zoomthumb img { cursor: zoom-in; }
+.zoombox {
+  position: fixed; inset: 0;
+  background: rgba(7, 8, 11, 0.88);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 60; padding: 4vh 4vw;
+  backdrop-filter: blur(3px);
+}
+.zoomcard {
+  width: min(880px, 92vw);
+  max-height: 92vh;
+  overflow: auto;
+  background: linear-gradient(180deg, var(--panel) 0%, var(--bg-2) 100%);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 0;
+  cursor: default;
+}
+.zoomcard.wide { width: min(1100px, 94vw); }
+.zoomhead {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 12px 12px 18px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 13px; color: var(--muted);
+  position: sticky; top: 0;
+  background: var(--panel);
+  border-radius: 16px 16px 0 0;
+}
+.zoomx {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text);
+  font-size: 18px; line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.15s var(--ease);
+}
+.zoomx:hover { border-color: var(--jade); }
+.zoomx:focus-visible { outline: 2px solid var(--jade); outline-offset: 2px; }
+.zoombody { padding: 18px; }
+.zoombody img { width: 100%; border-radius: 10px; display: block; }
+.zoombody svg { width: 100%; height: auto; }
+
 /* --------------------------------------------------------------------- misc */
 .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--muted); align-items: center; }
 .swatch { width: 11px; height: 11px; border-radius: 3px; display: inline-block; margin-right: 6px; vertical-align: -1px; }

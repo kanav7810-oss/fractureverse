@@ -1,6 +1,6 @@
 // Small shared pieces. Kept in one file on purpose, none of them earns its own module.
 import { motion } from "framer-motion";
-import { useEffect, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { loadJson, mode, type Mode } from "./data";
 
 export function useMode(): Mode | undefined {
@@ -140,6 +140,71 @@ export function Slider({
         onChange={(e) => onChange(Number(e.target.value))}
       />
     </label>
+  );
+}
+
+// Click to zoom. Thumbnail inline, click opens a rounded lightbox that fills most
+// of the screen but not all of it. X button top right, click outside or Escape closes.
+export function Zoom({ label, children, wide }: {
+  label: string;
+  children: ReactNode;
+  wide?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const close = useCallback(() => setOpen(false), []);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open ]);
+  return (
+    <>
+      <div
+        className="zoomthumb"
+        onClick={() => setOpen(true)}
+        title={`Click to enlarge: ${label}`}
+        role="button"
+        tabIndex={0}
+        aria-label={`Enlarge ${label}`}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") setOpen(true);
+        }}
+      >
+        {children}
+      </div>
+      {open && (
+        <motion.div
+          className="zoombox"
+          onClick={close}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.15 }}
+        >
+          <div
+            className={`zoomcard ${wide ? "wide" : ""}`}
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-label={label}
+          >
+            <div className="zoomhead">
+              <span>{label}</span>
+              <button className="zoomx" onClick={close} aria-label="Close">
+                {"\u00D7"}
+              </button>
+            </div>
+            <div className="zoombody">{children}</div>
+          </div>
+        </motion.div>
+      )}
+    </>
   );
 }
 
