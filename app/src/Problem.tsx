@@ -1,4 +1,5 @@
 // Problem statement page. Five sections in order. Palette only, no new styles.
+// Section order: problem, what Fractureverse does, diagrams, validated, who for.
 import {
   BrazilianDiagram,
   CcpDiagram,
