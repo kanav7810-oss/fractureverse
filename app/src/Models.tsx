@@ -91,6 +91,8 @@ export function Leaderboard() {
         ))}
       </div>
 
+      <LstmValidation />
+
       <h2>LSTM training history</h2>
       <div className="panel">
         <ResponsiveContainer width="100%" height={240}>
