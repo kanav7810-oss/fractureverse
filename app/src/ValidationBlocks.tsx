@@ -1,5 +1,26 @@
 // Explicit validation blocks. Numbers match the spec, plain text, sup tags only.
-import { Note, Stat } from "./ui";
+import { Stat } from "./ui";
+
+export function XfemValidation() {
+  return (
+    <div className="panel" style={{ marginTop: 14 }}>
+      <h3>Validation</h3>
+      <p className="muted" style={{ fontSize: 13 }}>
+        Benchmark case: panel 0.1 by 0.2 m under 100 MPa applied stress.
+        Geometry: center cracked panel.
+        Inputs: 100 MPa stress, opening fit for K.
+        Output: K_I 25.5 MPa sqrt(m) from opening fit.
+        Reference: closed form K_I 27.9 MPa sqrt(m). Error 8.6 percent.
+      </p>
+      <div className="grid cols4">
+        <Stat k="K_I measured" v="25.5" u="MPa sqrt(m)" />
+        <Stat k="K_I reference" v="27.9" u="MPa sqrt(m)" />
+        <Stat k="Error" v="8.6" u="percent" />
+        <Stat k="Stress" v="100" u="MPa" />
+      </div>
+    </div>
+  );
+}
 
 export function PeridynamicsValidation() {
   return (
