@@ -83,6 +83,17 @@ def F_compact(a: float, W: float) -> float:
     return f * math.sqrt(W / (math.pi * a))
 
 
+def F_tpb(a: float, W: float, S_over_W: float = 4.0) -> float:
+    """Three point bend. ASTM E399 single edge bend form at S/W = 4."""
+    x = a / W
+    if not 0.0 < x < 0.7:
+        raise ValueError(f"tpb needs 0 < a/W < 0.7, got {x:.4f}")
+    s = S_over_W
+    g = (1.99 - x * (1.0 - x) * (2.15 - 3.93 * x + 2.7 * x ** 2)
+         / ((1.0 + 2.0 * x) * (1.0 - x) ** 1.5))
+    return g * (s / 4.0)
+
+
 def F_through(a: float, W: float) -> float:
     """Through thickness crack in a finite width plate. Same secant family as center."""
     return F_center(a, W)
