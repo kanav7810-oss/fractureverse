@@ -23,7 +23,10 @@ export const GEOMETRY_META: Record<GeometryKey, { title: string; desc: string }>
     title: "Brazilian disk",
     desc: "Cracked disk under diametral compression. Diameter D, crack half length a, load P.",
   },
-  ct: { title: "Compact tension (CT)", desc: "Placeholder" },
+  ct: {
+    title: "Compact tension (CT)",
+    desc: "Standard CT specimen with pin loading. Width W, crack length a, load P at pins.",
+  },
 };
 
 function Frame({ children, label }: { children: React.ReactNode; label: string }) {
