@@ -7,7 +7,7 @@ import {
 import type { PeridynamicFixture, XfemFixture } from "./data";
 import { fmt } from "./data";
 import { GeometryStrip } from "./Geometry";
-import { CHART_AXIS, CHART_GRID, Loading, Note, Section, Stat, useFixture } from "./ui";
+import { CHART_AXIS, CHART_GRID, Loading, Note, Section, Stat, useFixture, Zoom } from "./ui";
 import { PeridynamicsValidation, XfemValidation } from "./ValidationBlocks";
 
 export function XfemView() {
@@ -28,6 +28,7 @@ export function XfemView() {
     >
       <h2>Path in the panel</h2>
       <div className="panel">
+        <Zoom label="XFEM crack path in the panel" wide>
         <ResponsiveContainer width="100%" height={280}>
           <LineChart data={path} margin={{ top: 8, right: 18, bottom: 12, left: 4 }}>
             <CartesianGrid stroke={CHART_GRID} />
@@ -42,10 +43,12 @@ export function XfemView() {
             <Line dataKey="y" stroke="#c96a3f" strokeWidth={2} dot={{ r: 2 }} isAnimationActive={false} />
           </LineChart>
         </ResponsiveContainer>
+        </Zoom>
       </div>
 
       <h2>Stress intensity along the path</h2>
       <div className="panel">
+        <Zoom label="Stress intensity along the path" wide>
         <ResponsiveContainer width="100%" height={260}>
           <LineChart data={path} margin={{ top: 8, right: 18, bottom: 12, left: 4 }}>
             <CartesianGrid stroke={CHART_GRID} />
@@ -60,6 +63,7 @@ export function XfemView() {
             <Line dataKey="theta" stroke="#e8b04b" dot={false} strokeWidth={2} isAnimationActive={false} />
           </LineChart>
         </ResponsiveContainer>
+        </Zoom>
         <div className="legend" style={{ marginTop: 8 }}>
           <span><i className="swatch" style={{ background: "#9aa4ff" }} />K_I</span>
           <span><i className="swatch" style={{ background: "#7fd1c0" }} />K_II</span>
@@ -137,7 +141,9 @@ export function PeridynamicView() {
       lede="Bonds break on their own, so nucleation and branching need no predefined path. The field below is the Part 1 concrete panel run, 5,000 nodes and 67,318 bonds, damage on a 100 by 50 grid."
     >
       <div className="panel">
-        <DamageCanvas data={pd.data} />
+        <Zoom label="Peridynamic damage field">
+          <DamageCanvas data={pd.data} />
+        </Zoom>
         <div className="legend" style={{ marginTop: 10 }}>
           <span><i className="swatch" style={{ background: "rgb(16,23,28)" }} />intact</span>
           <span><i className="swatch" style={{ background: "rgb(85,96,214)" }} />partial</span>
