@@ -65,6 +65,54 @@ export function Problem() {
         <TpbDiagram />
         <BrazilianDiagram />
       </div>
+
+      <h2>Section 4: What Was Validated</h2>
+      <div className="tablewrap panel">
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th><th>Benchmark Case</th><th>Key Metric</th>
+              <th className="num">Value</th><th>Reference</th><th className="num">Error</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Peridynamics</td><td>Pre-notched plate branching</td><td>Kink angle</td>
+              <td className="num">18 percent</td><td>Analytical angle</td><td className="num">18 percent</td>
+            </tr>
+            <tr>
+              <td>XFEM</td><td>0.1 by 0.2 m panel, 100 MPa</td><td>K_I opening fit</td>
+              <td className="num">25.5 MPa sqrt(m)</td><td>Closed form 27.9</td><td className="num">8.6 percent</td>
+            </tr>
+            <tr>
+              <td>PINN vs XFEM</td><td>Same panel</td><td>K_I PINN</td>
+              <td className="num">26.9 MPa sqrt(m)</td><td>Integral 27.7</td><td className="num">2.89 percent</td>
+            </tr>
+            <tr>
+              <td>PINN field</td><td>Same panel</td><td>Relative L2</td>
+              <td className="num">2.37 percent</td><td>XFEM field</td><td className="num">2.37 percent</td>
+            </tr>
+            <tr>
+              <td>LSTM</td><td>225 samples, 3 domains</td><td>RMSE</td>
+              <td className="num">0.0277 decades</td><td>Held out split</td><td className="num">n/a</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p className="muted" style={{ fontSize: 12 }}>
+        LSTM detail: R squared 0.99989, MAE 0.0227 decades.
+        Per domain RMSE: aerospace 0.0228, biomedical 0.0254, civil 0.0338.
+        PINN centre opening 13 percent low, enrichment carries least information at centre.
+      </p>
+
+      <h2>Section 5: Who This Is For</h2>
+      <div className="panel">
+        <p>
+          This platform is built for researchers who want a shared computational baseline
+          for fracture method comparison, and for students learning the differences between
+          continuum and non-continuum fracture formulations.
+        </p>
+      </div>
     </Section>
   );
 }
