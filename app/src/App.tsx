@@ -180,6 +180,20 @@ function Theories({ caps }: { caps: Capabilities }) {
             </motion.div>
           ))}
 
+      <h2>Geometry configurations per method</h2>
+      <h3>Peridynamics</h3>
+      <GeometryStrip keys={["sent", "dent", "ccp", "tpb", "brazilian", "ct"]} />
+      <h3>XFEM</h3>
+      <GeometryStrip keys={["sent", "dent", "ccp", "tpb", "brazilian", "ct"]} />
+      <h3>Cohesive zone</h3>
+      <GeometryStrip keys={["sent", "dent", "ccp", "tpb", "brazilian", "ct"]} />
+      <h3>Phase-field</h3>
+      <GeometryStrip keys={["sent", "dent", "ccp", "tpb", "brazilian", "ct"]} />
+      <PeridynamicsValidation />
+      <XfemValidation />
+      <PinnValidation />
+      <LstmValidation />
+
       <h2>Geometries the solver will accept</h2>
       <div className="tablewrap panel">
         <table>
