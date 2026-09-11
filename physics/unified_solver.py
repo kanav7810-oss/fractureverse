@@ -249,7 +249,9 @@ def solve(req: SolveRequest | None = None, **kw) -> dict[str, Any]:
 
 
 def capabilities() -> dict[str, Any]:
-    """Everything the frontend needs to build its selectors, in one call."""
+    """Everything the frontend needs to build its selectors, in one call.
+    Geometry keys now include sent, dent, ccp, tpb, brazilian, and ct aliases.
+    """
     return {
         "domains": {d: domain_metadata(d) for d in ("aerospace", "biomedical", "civil")},
         "theories": [{"key": k, "label": k.upper() if k != "peridynamic" else "Peridynamics",
