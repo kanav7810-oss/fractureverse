@@ -169,6 +169,10 @@ export function PeridynamicView() {
         </table>
       </div>
 
+      <h2>Geometry configurations</h2>
+      <GeometryStrip keys={["sent", "dent", "ccp", "tpb", "brazilian", "ct"]} />
+      <PeridynamicsValidation />
+
       <Note title="Finding 6.2">
         Effective tensile strength scales as one over the square root of the horizon, so the horizon
         implied strength of {fmt(s.pd_strength_MPa)} MPa is a property of the discretisation, not of the
