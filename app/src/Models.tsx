@@ -7,6 +7,7 @@ import {
 import type { MlFixture, PinnFixture } from "./data";
 import { fmt, fromLogLife } from "./data";
 import { CHART_AXIS, CHART_GRID, DOMAIN_COLOR, Loading, Note, Section, Stat, useFixture } from "./ui";
+import { LstmValidation, PinnValidation } from "./ValidationBlocks";
 
 const MODEL_LABEL: Record<string, string> = {
   lstm: "LSTM, two layers",
