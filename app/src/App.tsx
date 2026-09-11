@@ -1,4 +1,5 @@
-// FRACTUREVERSE Part 3 shell. Twelve features, one sidebar, no router dependency.
+// FRACTUREVERSE Part 3 shell. Fifteen features, one sidebar, no router dependency.
+// Added Problem, Cohesive zone, Phase-field. Existing twelve untouched in place.
 import { motion } from "framer-motion";
 import { useState } from "react";
 import type { Capabilities } from "./data";
