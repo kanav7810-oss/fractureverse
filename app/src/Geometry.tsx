@@ -49,6 +49,22 @@ export function DentDiagram() {
   );
 }
 
+export function CcpDiagram() {
+  return (
+    <Frame label="CCP">
+      <rect x="60" y="10" width="80" height="120" fill="none" stroke="#7fd1c0" strokeWidth="2" />
+      <line x1="80" y1="70" x2="120" y2="70" stroke="#e8b04b" strokeWidth="3" />
+      <text x="96" y="65" fill="#8f8d87" fontSize="9">2a</text>
+      <text x="95" y="135" fill="#8f8d87" fontSize="9">W</text>
+      <text x="45" y="75" fill="#8f8d87" fontSize="9">H</text>
+      <line x1="60" y1="4" x2="140" y2="4" stroke="#9aa4ff" strokeWidth="1" />
+      <text x="145" y="8" fill="#9aa4ff" fontSize="9">P</text>
+      <line x1="60" y1="136" x2="140" y2="136" stroke="#9aa4ff" strokeWidth="1" />
+      <text x="145" y="139" fill="#9aa4ff" fontSize="9">P</text>
+    </Frame>
+  );
+}
+
 export function SentDiagram() {
   return (
     <Frame label="SENT">
