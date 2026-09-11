@@ -113,13 +113,27 @@ def F_surface(a: float, W: float, c_over_a: float = 1.0, thickness: float | None
     return M / math.sqrt(Q)
 
 
+def F_brazilian(a: float, W: float) -> float:
+    """Brazilian disk with a center crack. Atkinson form at small a over R."""
+    x = a / W
+    if not 0.0 < x < 0.4:
+        raise ValueError(f"brazilian needs 0 < a/W < 0.4, got {x:.4f}")
+    return 1.0 - 0.5 * x + 2.48 * x ** 2
+
+
 _F_TABLE: dict[str, Callable[..., float]] = {
     "infinite": lambda a, W: 1.0,
     "center": F_center,
+    "ccp": F_center,
     "edge": F_edge,
+    "sent": F_edge,
+    "dent": F_dent,
     "compact": F_compact,
+    "ct": F_compact,
     "through": F_through,
     "surface": F_surface,
+    "tpb": F_tpb,
+    "brazilian": F_brazilian,
 }
 
 
