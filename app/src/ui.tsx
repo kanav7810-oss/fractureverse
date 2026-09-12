@@ -1,6 +1,7 @@
 // Small shared pieces. Kept in one file on purpose, none of them earns its own module.
 import { motion } from "framer-motion";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { loadJson, mode, type Mode } from "./data";
 
 export function useMode(): Mode | undefined {
@@ -183,30 +184,32 @@ export function Zoom({ label, children, wide }: {
       >
         {children}
       </div>
-      {open && (
-        <motion.div
-          className="zoombox"
-          onClick={close}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.15 }}
-        >
-          <div
-            className={`zoomcard ${wide ? "wide" : ""}`}
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-label={label}
+      {open &&
+        createPortal(
+          <motion.div
+            className="zoombox"
+            onClick={close}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.15 }}
           >
-            <div className="zoomhead">
-              <span>{label}</span>
-              <button className="zoomx" onClick={close} aria-label="Close">
-                {"\u00D7"}
-              </button>
+            <div
+              className={`zoomcard ${wide ? "wide" : ""}`}
+              onClick={(e) => e.stopPropagation()}
+              role="dialog"
+              aria-label={label}
+            >
+              <div className="zoomhead">
+                <span>{label}</span>
+                <button className="zoomx" onClick={close} aria-label="Close">
+                  {"\u00D7"}
+                </button>
+              </div>
+              <div className="zoombody">{children}</div>
             </div>
-            <div className="zoombody">{children}</div>
-          </div>
-        </motion.div>
-      )}
+          </motion.div>,
+          document.body,
+        )}
     </>
   );
 }
